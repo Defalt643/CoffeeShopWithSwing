@@ -15,7 +15,7 @@ public class Database {
     }
 
     public static Database getInstance() {
-        String dbPath = "./db/CoffeeStore.db";
+        String dbPath = "./db/okCoffeeShop.db";
         try {
             if (instance.c == null || instance.c.isClosed()) {
                 Class.forName("org.sqlite.JDBC");
