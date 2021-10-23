@@ -13,59 +13,71 @@ public class User {
     private int id;
     private String name;
     private String role;
-    private String Username;
-    private String Password;
+    private String username;
+    private String password;
+    private String tel;
 
-    public User(int id, String name, String role, String Username, String Password) {
+    public User(int id, String name, String tel,String role, String password,String username ) {
         this.id = id;
         this.name = name;
         this.role = role;
-        this.Username = Username;
-        this.Password = Password;
+        this.username = username;
+        this.password = password;
+        this.tel=tel;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", role=" + role + ", Username=" + Username + ", Password=" + Password + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", role=" + role + ", username=" + username + ", password=" + password + ", tel=" + tel + '}';
     }
+
+    
 }
