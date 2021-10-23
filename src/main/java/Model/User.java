@@ -10,11 +10,11 @@ package Model;
  * @author Xenon
  */
 public class User {
-    int id;
-    String name;
-    String role;
-    String Username;
-    String Password;
+    private int id;
+    private String name;
+    private String role;
+    private String Username;
+    private String Password;
 
     public User(int id, String name, String role, String Username, String Password) {
         this.id = id;
