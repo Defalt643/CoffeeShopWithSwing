@@ -32,9 +32,8 @@ public class MainPanel extends javax.swing.JDialog {
         setTitle("Ok Coffee Shop");
         setMaximumSize(new java.awt.Dimension(900, 500));
         setMinimumSize(new java.awt.Dimension(900, 500));
-        setModal(true);
+        setModalityType(java.awt.Dialog.ModalityType.MODELESS);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(900, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
