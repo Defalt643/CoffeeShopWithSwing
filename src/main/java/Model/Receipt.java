@@ -13,81 +13,63 @@ import java.util.Date;
  */
 public class Receipt {
     private int id;
-    private int emp_id;
     private Date date;
-    private int cus_id;
+    private int userId;
+    private int cusId;
     private int total;
-    private int cash;
-    private int change;
 
-    public Receipt(int id, int emp_id, Date date, int cus_id, int total, int cash, int change) {
+    public Receipt(int id, Date date, int userId, int cusId, int total) {
         this.id = id;
-        this.emp_id = emp_id;
         this.date = date;
-        this.cus_id = cus_id;
+        this.userId = userId;
+        this.cusId = cusId;
         this.total = total;
-        this.cash = cash;
-        this.change = change;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Receipt{" + "id=" + id + ", date=" + date + ", userId=" + userId + ", cusId=" + cusId + ", total=" + total + '}';
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setEmp_id(int emp_id) {
-        this.emp_id = emp_id;
-    }
-
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public void setCus_id(int cus_id) {
-        this.cus_id = cus_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setCusId(int cusId) {
+        this.cusId = cusId;
     }
 
     public void setTotal(int total) {
         this.total = total;
     }
 
-    public void setCash(int cash) {
-        this.cash = cash;
-    }
-
-    public void setChange(int change) {
-        this.change = change;
-    }
-
-    public int getEmp_id() {
-        return emp_id;
+    public int getId() {
+        return id;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public int getCus_id() {
-        return cus_id;
+    public int getUserId() {
+        return userId;
+    }
+
+    public int getCusId() {
+        return cusId;
     }
 
     public int getTotal() {
         return total;
     }
 
-    public int getCash() {
-        return cash;
-    }
 
-    public int getChange() {
-        return change;
-    }
-    
-        @Override
-    public String toString() {
-        return "Receipt{" + "id=" + id + ", emp_id=" + emp_id + ", date=" + date + ", cus_id=" + cus_id + ", total=" + total + ", cash=" + cash + ", change=" + change + '}';
-    }
 }
