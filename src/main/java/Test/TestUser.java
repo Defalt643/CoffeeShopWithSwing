@@ -16,8 +16,8 @@ public class TestUser {
     public static void main(String[] args){
         UserDAO user = new UserDAO();
         //TestInsertUser
-        int id = user.add(new User(-1,"winwin","Employee"
-                ,"user1","password1","08888888888"));
+        int id = user.add(new User(-1,"winwin","08888888888"
+                ,"Employee","password1","user1"));
         System.out.println("id : "+id);
         //TestLastUser
         User lastUser = user.get(id);
