@@ -10,6 +10,7 @@ package Model;
  * @author Xenon
  */
 public class User {
+
     private int id;
     private String name;
     private String role;
@@ -17,13 +18,21 @@ public class User {
     private String password;
     private String tel;
 
-    public User(int id, String name, String tel,String role, String password,String username ) {
+    public User(int id, String name, String tel, String role, String password, String username) {
         this.id = id;
         this.name = name;
         this.role = role;
         this.username = username;
         this.password = password;
-        this.tel=tel;
+        this.tel = tel;
+    }
+
+    public User(String name, String tel, String role, String password, String username) {
+        this(-1, name, tel, role, password, username);
+    }
+
+    public User(int id, String name, String tel, String role, String username) {
+        this(id, name, tel, role, "", username);
     }
 
     public int getId() {
@@ -79,5 +88,4 @@ public class User {
         return "User{" + "id=" + id + ", name=" + name + ", role=" + role + ", username=" + username + ", password=" + password + ", tel=" + tel + '}';
     }
 
-    
 }

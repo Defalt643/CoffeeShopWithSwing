@@ -15,58 +15,74 @@ public class ReceiptDetail {
     private int productId;
     private double price;
     private int amount;
+    private Product product;
+    private Receipt receipt;
 
-    public ReceiptDetail(int id, int receiptId, int productId, double price, int amount) {
+    public ReceiptDetail(int id, Product product, int amount, double price, Receipt receipt) {
         this.id = id;
-        this.receiptId = receiptId;
-        this.productId = productId;
-        this.price = price;
+        this.product = product;
         this.amount = amount;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setReceiptId(int receiptId) {
-        this.receiptId = receiptId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public void setPrice(double price) {
         this.price = price;
+        this.receipt = receipt;
+    }public ReceiptDetail(Product product,int amount, double price,Receipt receipt){
+        this(-1, product, amount, price, receipt);
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getReceiptId() {
-        return receiptId;
-    }
-
-    public int getProductId() {
-        return productId;
+   public double getTotal() {
+        return amount * price;
     }
 
     public double getPrice() {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public int getAmount() {
         return amount;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Receipt getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(Receipt receipt) {
+        this.receipt = receipt;
+    }
+    public void addAmount(int amount){
+        this.amount = this.amount+amount;
+    }
+
     @Override
     public String toString() {
-        return "ReceiptDetail{" + "id=" + id + ", receiptId=" + receiptId + ", productId=" + productId + ", price=" + price + ", amount=" + amount + '}';
+        return "ReceiptDetail{" + "id=" + id 
+                + ", product=" + product 
+                + ", amount=" + amount 
+                + ", price=" + price 
+                + ", total=" + this.getTotal()
+                +'}';
     }
     
 }

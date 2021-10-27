@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,62 +14,112 @@ import java.util.Date;
  */
 public class Receipt {
     private int id;
-    private Date date;
-    private int userId;
-    private int cusId;
-    private int total;
+    private Date created;
+    private User seller;
+    private Customer customer;
+    private ArrayList<ReceiptDetail> receiptDetail;
+    private double total = 0;
 
-    public Receipt(int id, Date date, int userId, int cusId, int total) {
+    public Receipt(int id, Date created, User seller, Customer customer) {
         this.id = id;
-        this.date = date;
-        this.userId = userId;
-        this.cusId = cusId;
+        this.created = created;
+        this.seller = seller;
+        this.customer = customer;
+        receiptDetail = new ArrayList<>();
+    }
+
+    public Receipt(User seller, Customer customer) {
+        this(-1, null, seller, customer);
+    }
+
+    public void addReceiptDetail(int id, Product product, int amount, double price) {
+        for (int row = 0; row < receiptDetail.size(); row++) {
+            ReceiptDetail r = receiptDetail.get(row);
+            if (r.getProduct().getId() == product.getId()) {
+                r.addAmount(amount);
+                return;
+            }
+        }
+        receiptDetail.add(new ReceiptDetail(id, product, amount, price, this));
+    }
+
+    public void addReceiptDetail(Product product, int amount) {
+        addReceiptDetail(id, product, amount, product.getPrice());
+    }
+
+    public void deleteReceiptDetail(int row) {
+        receiptDetail.remove(row);
+    }
+
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "Receipt{" + "id=" + id + ", date=" + date + ", userId=" + userId + ", cusId=" + cusId + ", total=" + total + '}';
-    }
+    public double getTotal() {
+        if (this.total == 0) {
+            double total = 0;
+            for (ReceiptDetail r : receiptDetail) {
+                total = total + r.getTotal();
+            }
+            return total;
+        } else {
+            return this.total;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setCusId(int cusId) {
-        this.cusId = cusId;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
 
     public int getId() {
         return id;
     }
 
-    public Date getDate() {
-        return date;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public Date getCreated() {
+        return created;
     }
 
-    public int getCusId() {
-        return cusId;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public int getTotal() {
-        return total;
+    public User getSeller() {
+        return seller;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public ArrayList<ReceiptDetail> getReceiptDetail() {
+        return receiptDetail;
+    }
+
+    public void setReceiptDetail(ArrayList<ReceiptDetail> receiptDetail) {
+        this.receiptDetail = receiptDetail;
+    }
+
+    @Override
+    public String toString() {
+        String str = "Receipt{" + "id=" + id
+                + ", created=" + created
+                + ", seller=" + seller
+                + ", customer=" + customer
+                + ", total =" + this.getTotal()
+                + "}\n";
+        for (ReceiptDetail r : receiptDetail) {
+            str = str + r.toString() + "\n";
+        }
+        return str;
     }
 
 
