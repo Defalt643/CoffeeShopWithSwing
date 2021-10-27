@@ -34,7 +34,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         conn = db.getConnection();
         int id = -1;
         try {
-            String sql = "INSERT INTO Receipt (customer_id,user_id,total) VALUES (?,?,?)";
+            String sql = "INSERT INTO Receipt (Cus_id,User_id,total) VALUES (?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, object.getCustomer().getId());
             stmt.setInt(2, object.getSeller().getId());
@@ -206,7 +206,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         conn = db.getConnection();
         int row = 0;
         try {
-            String sql = "DELETE FROM receipt WHERE id = ?";
+            String sql = "DELETE FROM Receipt WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             row = stmt.executeUpdate();
@@ -226,7 +226,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         conn = db.getConnection();
         int row =0;
         try{
-            String sql = "UPDATE Receipt Cus_id = ?,User_id = ?,Total = ? WHERE id=?";
+            String sql = "UPDATE Receipt Cus_id = ?,User_id = ?,Total = ? WHERE Id=?";
             PreparedStatement stmt= conn.prepareStatement(sql);
             stmt.setInt(1, object.getCustomer().getId());
             stmt.setInt(2, object.getSeller().getId());
