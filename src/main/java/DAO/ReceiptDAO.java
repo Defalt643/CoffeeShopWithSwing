@@ -46,7 +46,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                 object.setId(id);
             }
             for(ReceiptDetail r : object.getReceiptDetail()) {
-                String sqlDetail = "INSERT INTO ReceiptDetail (receipt_id,product_id,price, amount) VALUES (?,?,?,?);";
+                String sqlDetail = "INSERT INTO ReceiptDetail (Receipt_id,Product_id,Price, Amount) VALUES (?,?,?,?);";
                 PreparedStatement stmtDetail = conn.prepareStatement(sqlDetail);
                 stmtDetail.setInt(1, r.getReceipt().getId());
                 stmtDetail.setInt(2, r.getProduct().getId());
