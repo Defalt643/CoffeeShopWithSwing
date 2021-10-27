@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ming
@@ -48,5 +50,18 @@ public class Product {
         return "Product{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
+    public static ArrayList<Product> testProductList() {
+        ArrayList<Product> list = new ArrayList<>();
+        list.add(new Product(1, "Espresso", 45));
+        list.add(new Product(2, "Mocha", 45));
+        list.add(new Product(3, "Latte", 50));
+        list.add(new Product(4, "Muchiatto", 50));
+        list.add(new Product(5, "Hot milk", 30));
+        list.add(new Product(6, "Caramel milk", 40));
+        list.add(new Product(7, "Honey milktea", 35));
+        list.add(new Product(8, "Iced Tea", 30));
+        list.add(new Product(9, "Thai cold Tea", 30));
+        return list;
+    }
     
 }
