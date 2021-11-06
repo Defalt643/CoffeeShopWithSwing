@@ -30,8 +30,8 @@ public class TestCustomer {
         Customer updateCus = cus.get(id);
         System.out.println("Update Customer : "+updateCus);
         //TestDeleteCustomer
-        cus.delete(row);
-        Customer deleteCus = cus.get(row);
-        System.out.println("Delete Customer :"+deleteCus);
+//        cus.delete(row);
+//        Customer deleteCus = cus.get(row);
+//        System.out.println("Delete Customer :"+deleteCus);
     }
 }

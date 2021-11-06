@@ -34,7 +34,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         conn = db.getConnection();
         int id = -1;
         try {
-            String sql = "INSERT INTO Receipt (Cus_id,User_id,total) VALUES (?,?,?)";
+            String sql = "INSERT INTO Receipt (Cus_id,User_id,Total) VALUES (?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, object.getCustomer().getId());
             stmt.setInt(2, object.getSeller().getId());
@@ -52,7 +52,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                 stmtDetail.setInt(2, r.getProduct().getId());
                 stmtDetail.setDouble(3, r.getPrice());
                 stmtDetail.setInt(4, r.getAmount());
-                int rowDetail = stmt.executeUpdate();
+                int rowDetail = stmtDetail.executeUpdate();
                 ResultSet resultDetail = stmt.getGeneratedKeys();
                 if (resultDetail.next()) {
                     id = resultDetail.getInt(1);
@@ -77,10 +77,10 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
 
             String sql = "SELECT r.Id as id,\n"
                     + "       r.Created as created,\n"
-                    + "       customer_id,\n"
+                    + "       Cus_id as customer_id,\n"
                     + "       c.Name as customer_name,\n"
                     + "       c.Tel as customer_tel,\n"
-                    + "       c.Purchase_amount as purcahseAount   ,\n"
+                    + "       c.Purchase_amount as purcahseAmount   ,\n"
                     + "       user_id,\n"
                     + "       u.Name as user_name,\n"
                     + "       u.tel as user_tel,\n"
@@ -88,7 +88,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                     + "       u.Username as username,\n"
                     + "       total\n"
                     + "  FROM Receipt r,Customer c, User u\n"
-                    + "  WHERE r.customer_id = c.id AND r.user_id = u.id;";
+                    + "  WHERE r.Cus_id = c.id AND r.User_id = u.id;";
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(sql);
 
@@ -98,7 +98,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                 int customerId = result.getInt("customer_id");
                 String customerName = result.getString("customer_name");
                 String customerTel = result.getString("customer_tel");
-                int purchaseAmount = result.getInt("purcahseAount");
+                int purchaseAmount = result.getInt("purcahseAmount");
                 int userId = result.getInt("Id");
                 String role = result.getString("Role");
                 String userName = result.getString("user_name");
@@ -130,18 +130,29 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         try {
             String sql ="SELECT r.Id as id,\n"
                     + "       r.Created as created,\n"
-                    + "       customer_id,\n"
+                    + "       Cus_id,\n"
                     + "       c.Name as customer_name,\n"
                     + "       c.Tel as customer_tel,\n"
-                    + "       c.Purchase_amount as purcahseAount   ,\n"
-                    + "       user_id,\n"
+                    + "       User_id,\n"
                     + "       u.Name as user_name,\n"
-                    + "       u.tel as user_tel,\n"
-                    + "       u.Role as Role,\n"
-                    + "       u.Username as username,\n"
-                    + "       total\n"
+                    + "       u.Tel as user_tel,\n"
+                    + "       Total\n"
                     + "  FROM Receipt r,Customer c, User u\n"
-                    + "  WHERE r.customer_id = c.id AND r.user_id = u.id;";
+                    + "  WHERE r.Id = ? AND r.Cus_id = c.Id AND r.User_id = u.Id;";
+//                    "SELECT r.Id as id,\n"
+//                    + "       r.Created as created,\n"
+//                    + "       Cus_id,\n"
+//                    + "       c.Name as customer_name,\n"
+//                    + "       c.Tel as customer_tel,\n"
+//                    + "       c.Purchase_amount as purcahseAount   ,\n"
+//                    + "       user_id,\n"
+//                    + "       u.Name as user_name,\n"
+//                    + "       u.tel as user_tel,\n"
+//                    + "       u.Role as Role,\n"
+//                    + "       u.Username as username,\n"
+//                    + "       total\n"
+//                    + "  FROM Receipt r,Customer c, User u\n"
+//                    + "  WHERE r.Cus_id = c.id AND r.user_id = u.id;";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet result = stmt.executeQuery();
@@ -160,15 +171,15 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                 String username= result.getString("username");
                 double total = result.getDouble("total");
                 Receipt receipt = new Receipt(id, created, new User(userId, userName, userTel,role,username),new Customer(customerId, customerName, customerTel,purchaseAmount));                 
-                 String sqlDetail = "SELECT rd.id as id,\n"
-                        + "       receipt_id,\n"
-                        + "       product_id,\n"
-                        + "       p.name as product_name,\n"
-                        + "       p.price as product_price, \n"
-                        + "       rd.price as price,\n"
+                 String sqlDetail = "SELECT rd.Id as id,\n"
+                        + "       Receipt_id,\n"
+                        + "       Product_id,\n"
+                        + "       p.Name as product_name,\n"
+                        + "       p.Price as product_price, \n"
+                        + "       rd.Price as price,\n"
                         + "       amount\n"
-                        + "  FROM receipt_detail rd, product p\n"
-                        + "  WHERE receipt_id = ? AND rd.product_id = p.id;"
+                        + "  FROM ReceiptDetail rd, Product p\n"
+                        + "  WHERE Receipt_id = ? AND rd.Product_id = p.id;"
                         + "  ORDER BY created DESC;";
                 PreparedStatement stmtDetail = conn.prepareStatement(sqlDetail);
                 stmtDetail.setInt(1, id);
@@ -226,7 +237,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
         conn = db.getConnection();
         int row =0;
         try{
-            String sql = "UPDATE Receipt Cus_id = ?,User_id = ?,Total = ? WHERE Id=?";
+            String sql = "UPDATE Receipt SET Cus_id = ?,User_id = ?,Total = ? WHERE Id=?";
             PreparedStatement stmt= conn.prepareStatement(sql);
             stmt.setInt(1, object.getCustomer().getId());
             stmt.setInt(2, object.getSeller().getId());

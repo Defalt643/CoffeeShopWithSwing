@@ -18,13 +18,13 @@ import Model.User;
 public class TestReceipt {
     public static void main(String[] args) {
         //AddProduct2price
-        Product p1 = new Product(1,"hot cocoa",55.0);
-        Product p2 = new Product(2,"hot mocha",60.0);
+        Product p1 = new Product(1,"Hot Cocoa",55.0);
+        Product p2 = new Product(2,"Hot Mocha",60.0);
         //NewSellerUser
-        User seller = new User("winwin","0888888888"
+        User seller = new User(1,"winwin","0888888888"
                 ,"Employee","password1","user1");
         //NewCustomer
-        Customer customer = new Customer("Somsri","0801111111");
+        Customer customer = new Customer(1,"Somsri","0801111111",0);
         //NewReceipt
         Receipt receipt = new Receipt(seller, customer);
         receipt.addReceiptDetail(p1, 1);
@@ -37,7 +37,7 @@ public class TestReceipt {
         receipt.addReceiptDetail(p1,2);
         System.out.println("receipt : "+receipt);
         //NewReceiptDAO
-        ReceiptDAO rec = new ReceiptDAO();
+          ReceiptDAO rec = new ReceiptDAO();
         rec.add(receipt);
         System.out.println("id = : "+rec);
         //ReceiptUpdate

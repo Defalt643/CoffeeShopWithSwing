@@ -13,13 +13,13 @@ public class Customer {
     private int id;
     private String name;
     private String tel;
-    private int purchase_amount;
+    private int purchaseAmount;
     
-    public Customer(int id, String name, String tel, int purchase_amount){
+    public Customer(int id, String name, String tel, int purchaseAmount){
         this.id = id;
         this.name = name;
         this.tel = tel;
-        this.purchase_amount = purchase_amount;
+        this.purchaseAmount = purchaseAmount;
     }
     public Customer(String name, String tel,int purchaseAmount){
         this(-1,name,tel,purchaseAmount);
@@ -34,7 +34,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", tel=" + tel + ", purchase_amount=" + purchase_amount + '}';
+        return "Customer{" + "id=" + id + ", name=" + name + ", tel=" + tel 
+                + ", purchase_amount=" + purchaseAmount + '}';
     }
 
     public void setId(int id) {
@@ -58,11 +59,11 @@ public class Customer {
     }
 
     public int getPurchase_amount() {
-        return purchase_amount;
+        return purchaseAmount;
     }
 
-    public void setPurchase_amount(int purchase_amount) {
-        this.purchase_amount = purchase_amount;
+    public void setPurchase_amount(int purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
     }
     
 }
