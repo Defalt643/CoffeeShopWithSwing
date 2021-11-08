@@ -97,19 +97,14 @@ public class ProductPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
-        System.out.println("Product Panel: " + product);
-        for(OnBuyProductListener subscriber: subscribers){
-            subscriber.buy(product);
-        }
+        System.out.println("Product Panel: " + product );
+        selectedOrders.add(product);
+        System.out.println(selectedOrders);
     }//GEN-LAST:event_btnImgActionPerformed
 
-    public interface OnBuyProductListener{
-        public void buy(Product product);
-    }
-    public void addOnBuyProductListener(OnBuyProductListener subscriber) {
-        subscribers.add(subscriber);
-    }
-    private ArrayList<OnBuyProductListener> subscribers = new ArrayList<>();
+
+    ArrayList<Product> selectedOrders = new ArrayList<>();
+    ArrayList<Product> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImg;
     private javax.swing.JLabel lblName;
