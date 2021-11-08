@@ -160,7 +160,7 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
             if (result.next()) {
                 int rid = result.getInt("id");
                 Date created = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(result.getString("created"));
-                int customerId = result.getInt("customer_id");
+                int customerId = result.getInt("Cus_id");
                 String customerName = result.getString("customer_name");
                 String customerTel = result.getString("customer_tel");
                 int purchaseAmount = result.getInt("purcahseAount");
