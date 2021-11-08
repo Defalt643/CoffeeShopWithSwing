@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class ProductPanel extends javax.swing.JPanel {
 
     private final Product product;
-    private int amount = 0;
 
     /**
      * Creates new form ProductPanel
@@ -98,14 +97,14 @@ public class ProductPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
-        System.out.println("Product Panel: " + product + "Amount :" + amount);
+        System.out.println("Product Panel: " + product);
         for(OnBuyProductListener subscriber: subscribers){
-            subscriber.buy(product, amount);
+            subscriber.buy(product);
         }
     }//GEN-LAST:event_btnImgActionPerformed
 
     public interface OnBuyProductListener{
-        public void buy(Product product, int amount);
+        public void buy(Product product);
     }
     public void addOnBuyProductListener(OnBuyProductListener subscriber) {
         subscribers.add(subscriber);
