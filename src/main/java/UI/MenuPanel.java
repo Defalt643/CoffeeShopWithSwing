@@ -106,7 +106,7 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Cancle");
+        jButton4.setText("Cancel");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Order : ");
