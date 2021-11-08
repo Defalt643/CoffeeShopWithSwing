@@ -6,6 +6,7 @@
 package UI;
 
 import Model.Product;
+import Model.ReceiptDetail;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -17,12 +18,20 @@ import java.util.ArrayList;
 public class MenuPanel extends javax.swing.JPanel {
 
     private final ArrayList<Product> productList;
+    private final ArrayList<ReceiptDetail> receiptDetailList;
     /**
      * Creates new form MenuPanel
      */
     public MenuPanel() {
         initComponents();
+        //Call Menu data from Mockup(DB)
         productList = Product.testProductList();
+        receiptDetailList = ReceiptDetail.testReceiptDetail();
+        generateMenu();
+        generateOrder();
+    }
+
+    public void generateMenu() {
         int productSize = productList.size();
         productSize = productSize / 3 + productSize % 3;
         productSelector.setLayout(new GridLayout(productSize, 3));
@@ -31,6 +40,17 @@ public class MenuPanel extends javax.swing.JPanel {
         for (Product product : productList) {
             ProductPanel p = new ProductPanel(product);
             productSelector.add(p);   
+        }
+    }
+    
+    public void generateOrder() {
+        int orderSize = receiptDetailList.size();
+        orderPanel.setLayout(new GridLayout(orderSize, 1));
+        orderPanel.setMinimumSize(new Dimension(90,(orderSize * 30)));
+        orderPanel.setPreferredSize(new Dimension(90,(orderSize * 30)));
+        for (ReceiptDetail recDetail : receiptDetailList) {
+            OrderPanel p = new OrderPanel(recDetail);
+            orderPanel.add(p);   
         }
     }
 
@@ -53,7 +73,7 @@ public class MenuPanel extends javax.swing.JPanel {
         productSelectorScroll = new javax.swing.JScrollPane();
         productSelector = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        orderPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -102,22 +122,11 @@ public class MenuPanel extends javax.swing.JPanel {
         jScrollPane2.setMinimumSize(new java.awt.Dimension(100, 60));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(100, 60));
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(100, 200));
-        jPanel1.setMinimumSize(new java.awt.Dimension(100, 200));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 200));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 251, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-
-        jScrollPane2.setViewportView(jPanel1);
+        orderPanel.setMaximumSize(new java.awt.Dimension(100, 200));
+        orderPanel.setMinimumSize(new java.awt.Dimension(100, 200));
+        orderPanel.setPreferredSize(new java.awt.Dimension(100, 200));
+        orderPanel.setLayout(new java.awt.GridLayout());
+        jScrollPane2.setViewportView(orderPanel);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -285,12 +294,12 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel orderPanel;
     private javax.swing.JPanel productSelector;
     private javax.swing.JScrollPane productSelectorScroll;
     // End of variables declaration//GEN-END:variables

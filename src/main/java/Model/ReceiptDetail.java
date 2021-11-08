@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Xenon
@@ -83,6 +85,20 @@ public class ReceiptDetail {
                 + ", price=" + price 
                 + ", total=" + this.getTotal()
                 +'}';
+    }
+    
+     public static ArrayList<ReceiptDetail> testReceiptDetail() {
+        ArrayList<ReceiptDetail> list = new ArrayList<>();
+        Product p1 = new Product(1, "Espresso", 45);
+        Product p2 = new Product(2, "Mocha", 45);
+        Product p3 = new Product(3, "Latte", 50);
+        User seller = new User(1,"winwin","0888888888","Employee","password1","user1");
+        Customer customer = new Customer(1,"Somsri","0801111111",0);
+        Receipt testReceipt = new Receipt(seller, customer);
+        list.add(new ReceiptDetail(1, p1, 1, p1.getPrice(), testReceipt));
+        list.add(new ReceiptDetail(2, p2, 1, p2.getPrice(), testReceipt));
+        list.add(new ReceiptDetail(3, p3, 1, p3.getPrice(), testReceipt));
+        return list;
     }
     
 }
