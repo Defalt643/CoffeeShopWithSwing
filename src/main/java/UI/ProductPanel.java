@@ -5,9 +5,9 @@
  */
 package UI;
 
+import Model.OrderUI;
 import Model.Product;
 import java.util.ArrayList;
-
 /**
  *
  * @author Xenon
@@ -97,14 +97,19 @@ public class ProductPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
-        System.out.println("Product Panel: " + product );
-        selectedOrders.add(product);
-        System.out.println(selectedOrders);
+        System.out.println("Product Panel: " + product);
+        var index = menuPanel.checkOrder(product);
+        if (index == -1) {
+            menuPanel.countedOrders.add(new OrderUI(product, 1));
+        } else {
+            menuPanel.countedOrders.get(index).addAmount();
+        }menuPanel.orderLogging();
     }//GEN-LAST:event_btnImgActionPerformed
+    
 
-
+  
+    MenuPanel menuPanel;
     ArrayList<Product> selectedOrders = new ArrayList<>();
-    ArrayList<Product> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImg;
     private javax.swing.JLabel lblName;

@@ -10,6 +10,7 @@ package Model;
  * @author Xenon
  */
 public class OrderUI {
+
     private Product product;
     private int amount;
     private double price;
@@ -26,6 +27,14 @@ public class OrderUI {
 
     public int getAmount() {
         return amount;
+    }
+
+    public void addAmount() {
+        amount++;
+    }
+
+    public void decreaseAmount() {
+        amount--;
     }
 
     public double getPrice() {
@@ -48,5 +57,5 @@ public class OrderUI {
     public String toString() {
         return "OrderUI{" + "product=" + product + ", amount=" + amount + ", price=" + price + '}';
     }
-    
+
 }
