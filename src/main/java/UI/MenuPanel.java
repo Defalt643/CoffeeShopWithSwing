@@ -5,6 +5,7 @@
  */
 package UI;
 
+import DAO.ProductDAO;
 import Model.Product;
 import Model.ReceiptDetail;
 import java.awt.Dimension;
@@ -25,7 +26,8 @@ public class MenuPanel extends javax.swing.JPanel {
     public MenuPanel() {
         initComponents();
         //Call Menu data from Mockup(DB)
-        productList = Product.testProductList();
+        ProductDAO pDAO = new ProductDAO();
+        productList = pDAO.getAll();
         receiptDetailList = ReceiptDetail.testReceiptDetail();
         generateMenu();
         generateOrder();
