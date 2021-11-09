@@ -129,11 +129,15 @@ public class OrderPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void minusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusBtnActionPerformed
-        // TODO add your handling code here:
+        if (receiptDetail.getAmount() > 1) {
+            receiptDetail.minusAmount(1);
+            amountLbl.setText("" + receiptDetail.getAmount());
+        }
     }//GEN-LAST:event_minusBtnActionPerformed
 
     private void plusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusBtnActionPerformed
-        // TODO add your handling code here:
+        receiptDetail.addAmount(1);
+        amountLbl.setText("" + receiptDetail.getAmount());
     }//GEN-LAST:event_plusBtnActionPerformed
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed

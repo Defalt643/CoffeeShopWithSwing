@@ -76,6 +76,9 @@ public class ReceiptDetail {
     public void addAmount(int amount){
         this.amount = this.amount+amount;
     }
+    public void minusAmount(int amount){
+        this.amount = this.amount-amount;
+    }
 
     @Override
     public String toString() {
