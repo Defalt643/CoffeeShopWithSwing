@@ -41,7 +41,7 @@ public class MenuPanel extends javax.swing.JPanel {
         productSelector.setMinimumSize(new Dimension(480,(productSize * 200)));
         productSelector.setPreferredSize(new Dimension(480,(productSize * 200)));
         for (Product product : productList) {
-            ProductPanel p = new ProductPanel(product);
+            ProductPanel p = new ProductPanel(product, this);
 //            p.addOnBuyListener(subscriber);
 //Error
             productSelector.add(p);   

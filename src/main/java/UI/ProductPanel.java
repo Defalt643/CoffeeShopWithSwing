@@ -23,13 +23,15 @@ import javax.swing.ImageIcon;
 public class ProductPanel extends javax.swing.JPanel {
 
     private final Product product;
+    private final MenuPanel menuPanel;
 
     /**
      * Creates new form ProductPanel
      */
-    ProductPanel(Product product) {
+    ProductPanel(Product product, MenuPanel menuPanel) {
         initComponents();
         this.product = product;
+        this.menuPanel = menuPanel;
         setProductData(product);
         loadImage();
     }
@@ -124,23 +126,22 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
         System.out.println("Product Panel: " + product);
-        for(OnBuyListener subscriber: subscribers) {
-            subscriber.buy(product);
-        }
-        
-        
+        menuPanel.countedOrders.add(new OrderUI(product, 1));
+        System.out.println(menuPanel.countedOrders.toString());
+//        for(OnBuyListener subscriber: subscribers) {
+//            subscriber.buy(product);
+//        }
     }//GEN-LAST:event_btnImgActionPerformed
     
-    public interface OnBuyListener {
-        public void buy(Product product);
-    }
-    
-    public void addOnBuyListener(OnBuyListener subscriber) {
-        subscribers.add(subscriber);
-    }
-    
-    ArrayList<OnBuyListener> subscribers = new ArrayList<>();
-    ArrayList<Product> selectedOrders = new ArrayList<>();
+//    public interface OnBuyListener {
+//        public void buy(Product product);
+//    }
+//    
+//    public void addOnBuyListener(OnBuyListener subscriber) {
+//        subscribers.add(subscriber);
+//    }
+//    
+//    ArrayList<OnBuyListener> subscribers = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImg;
     private javax.swing.JLabel lblName;

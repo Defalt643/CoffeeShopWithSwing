@@ -21,7 +21,7 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel() {
+    public LoginPanel(MainPanel mainPanel) {
         initComponents();
         UserDAO uDAO = new UserDAO();
         getLoginList = uDAO.getAll();
