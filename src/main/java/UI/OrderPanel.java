@@ -16,7 +16,7 @@ import Model.ReceiptDetail;
 public class OrderPanel extends javax.swing.JPanel {
 
     private final ReceiptDetail receiptDetail;
-     private final MenuPanel menuPanel;
+    private final MenuPanel menuPanel;
 
     /**
      * Creates new form OrderPanel
@@ -31,7 +31,7 @@ public class OrderPanel extends javax.swing.JPanel {
     public void setOrderData(ReceiptDetail receiptDetail) {
         orderLbl.setText(receiptDetail.getProduct().getName());
         amountLbl.setText("" + receiptDetail.getAmount());
-        priceLbl.setText("" + receiptDetail.getPrice());
+        updateTotalPrice();
     }
 
     /**
@@ -137,19 +137,23 @@ public class OrderPanel extends javax.swing.JPanel {
             receiptDetail.minusAmount(1);
             amountLbl.setText("" + receiptDetail.getAmount());
             System.out.println(receiptDetail);
-            menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(),receiptDetail.getAmount()));
+            menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(), receiptDetail.getAmount()));
         }
+        updateTotalPrice();
     }//GEN-LAST:event_minusBtnActionPerformed
 
     private void plusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusBtnActionPerformed
         receiptDetail.addAmount(1);
         amountLbl.setText("" + receiptDetail.getAmount());
         System.out.println(receiptDetail);
-        menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(),receiptDetail.getAmount()));
+        menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(), receiptDetail.getAmount()));
+        updateTotalPrice();
     }//GEN-LAST:event_plusBtnActionPerformed
-
+    public void updateTotalPrice() {
+        priceLbl.setText(String.valueOf(receiptDetail.getTotal()));
+    }
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_delBtnActionPerformed
 
 
