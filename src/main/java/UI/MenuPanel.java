@@ -60,7 +60,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         orderPanel.setMinimumSize(new Dimension(90, (orderSize * 50)));
         orderPanel.setPreferredSize(new Dimension(90, (orderSize * 50)));
         for (ReceiptDetail recDetail : receiptDetailList) {
-            OrderPanel p = new OrderPanel(recDetail,this);
+            OrderPanel p = new OrderPanel(recDetail, this);
             orderPanel.add(p);
         }
     }
@@ -91,7 +91,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -149,6 +149,11 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         orderPanel.setMaximumSize(new java.awt.Dimension(100, 200));
         orderPanel.setMinimumSize(new java.awt.Dimension(100, 200));
         orderPanel.setPreferredSize(new java.awt.Dimension(100, 200));
+        orderPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                orderPanelMouseEntered(evt);
+            }
+        });
         orderPanel.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane2.setViewportView(orderPanel);
 
@@ -170,8 +175,8 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         jLabel7.setForeground(new java.awt.Color(125, 96, 57));
         jLabel7.setText("Change");
 
-        jLabel2.setForeground(new java.awt.Color(125, 96, 57));
-        jLabel2.setText("0.00");
+        total.setForeground(new java.awt.Color(125, 96, 57));
+        total.setText("0.00");
 
         jLabel8.setForeground(new java.awt.Color(125, 96, 57));
         jLabel8.setText("0.00");
@@ -194,7 +199,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
+                        .addComponent(total))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +224,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(total))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -313,6 +318,10 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void orderPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderPanelMouseEntered
+        updateTotal();
+    }//GEN-LAST:event_orderPanelMouseEntered
 //    private final ArrayList<ReceiptDetail> receipt = ReceiptDetail.testReceiptDetail();
 //    @Override
 //    public void buy(Product product) {
@@ -336,7 +345,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         User seller = new User(1, "winwin", "0888888888", "Employee", "password1", "user1");
         Customer customer = new Customer(1, "Somsri", "0801111111", 0);
         for (int i = 0; i < countedOrders.size(); i++) {
-            OrderPanel orp = new OrderPanel(new ReceiptDetail(countedOrders.get(i).getProduct(), countedOrders.get(i).getAmount(), countedOrders.get(i).getProduct().getPrice(), new Receipt(seller, customer)),this);
+            OrderPanel orp = new OrderPanel(new ReceiptDetail(countedOrders.get(i).getProduct(), countedOrders.get(i).getAmount(), countedOrders.get(i).getProduct().getPrice(), new Receipt(seller, customer)), this);
             orderPanel.add(orp);
         }
 //        for(OrderUI recDetail : countedOrders){
@@ -355,19 +364,32 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                 countedOrders.get(i).addAmount();
                 genOrder();
                 System.out.println(countedOrders.toString());
+                updateTotal();
                 return;
             }
         }
         countedOrders.add(order);
         genOrder();
         System.out.println(countedOrders.toString());
-    }public void updateCountedOrders(OrderUI order){
-        for(int i=0;i<countedOrders.size();i++){
-            if(order.getProduct().getName().equals(countedOrders.get(i).getProduct().getName())){
+        updateTotal();
+    }
+
+    public void updateCountedOrders(OrderUI order) {
+        for (int i = 0; i < countedOrders.size(); i++) {
+            if (order.getProduct().getName().equals(countedOrders.get(i).getProduct().getName())) {
                 countedOrders.get(i).setAmount(order.getAmount());
                 return;
             }
         }
+        updateTotal();
+    }
+
+    public void updateTotal() {
+        double total = 0;
+        for (int i = 0; i < countedOrders.size(); i++) {
+            total += countedOrders.get(i).getPrice() * countedOrders.get(i).getAmount();
+        }
+        this.total.setText(String.valueOf(total));
     }
     public ArrayList<OrderUI> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -377,7 +399,6 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -393,5 +414,6 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private javax.swing.JPanel orderPanel;
     private javax.swing.JPanel productSelector;
     private javax.swing.JScrollPane productSelectorScroll;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }
