@@ -46,10 +46,15 @@ public class OrderPanel extends javax.swing.JPanel {
         priceLbl = new javax.swing.JLabel();
         delBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 243, 230));
+
         orderLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        orderLbl.setForeground(new java.awt.Color(125, 96, 57));
         orderLbl.setText("Order");
 
+        minusBtn.setBackground(new java.awt.Color(255, 227, 189));
         minusBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        minusBtn.setForeground(new java.awt.Color(102, 102, 102));
         minusBtn.setText("-");
         minusBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,10 +63,13 @@ public class OrderPanel extends javax.swing.JPanel {
         });
 
         amountLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        amountLbl.setForeground(new java.awt.Color(125, 96, 57));
         amountLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         amountLbl.setText("0");
 
+        plusBtn.setBackground(new java.awt.Color(255, 227, 189));
         plusBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        plusBtn.setForeground(new java.awt.Color(102, 102, 102));
         plusBtn.setText("+");
         plusBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,12 +78,15 @@ public class OrderPanel extends javax.swing.JPanel {
         });
 
         priceLbl.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        priceLbl.setForeground(new java.awt.Color(125, 96, 57));
         priceLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         priceLbl.setText("0.00");
         priceLbl.setAutoscrolls(true);
         priceLbl.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        delBtn.setBackground(new java.awt.Color(255, 227, 189));
         delBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        delBtn.setForeground(new java.awt.Color(102, 102, 102));
         delBtn.setText("X");
         delBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

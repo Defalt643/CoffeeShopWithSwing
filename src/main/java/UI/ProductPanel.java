@@ -62,10 +62,13 @@ public class ProductPanel extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 243, 230));
         setMaximumSize(new java.awt.Dimension(165, 200));
         setMinimumSize(new java.awt.Dimension(165, 180));
         setPreferredSize(new java.awt.Dimension(165, 200));
 
+        btnImg.setBackground(new java.awt.Color(255, 255, 255));
+        btnImg.setForeground(new java.awt.Color(255, 255, 255));
         btnImg.setText("Img");
         btnImg.setMaximumSize(new java.awt.Dimension(145, 145));
         btnImg.setMinimumSize(new java.awt.Dimension(145, 145));
@@ -76,12 +79,14 @@ public class ProductPanel extends javax.swing.JPanel {
             }
         });
 
+        lblName.setForeground(new java.awt.Color(125, 96, 57));
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblName.setText("Name");
         lblName.setMaximumSize(new java.awt.Dimension(100, 20));
         lblName.setMinimumSize(new java.awt.Dimension(100, 20));
         lblName.setPreferredSize(new java.awt.Dimension(100, 20));
 
+        lblPrice.setForeground(new java.awt.Color(125, 96, 57));
         lblPrice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrice.setText("0.0");
         lblPrice.setMaximumSize(new java.awt.Dimension(45, 20));
@@ -98,9 +103,11 @@ public class ProductPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

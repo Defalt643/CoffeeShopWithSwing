@@ -94,14 +94,21 @@ public class MenuPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
 
+        jPanel3.setBackground(new java.awt.Color(125, 96, 57));
         jPanel3.setMaximumSize(new java.awt.Dimension(800, 400));
         jPanel3.setMinimumSize(new java.awt.Dimension(800, 400));
 
+        jButton2.setBackground(new java.awt.Color(250, 233, 215));
+        jButton2.setForeground(new java.awt.Color(125, 96, 57));
         jButton2.setText("OK");
 
+        jButton1.setBackground(new java.awt.Color(250, 233, 215));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(125, 96, 57));
         jButton1.setText("Register");
 
+        jButton3.setBackground(new java.awt.Color(250, 233, 215));
+        jButton3.setForeground(new java.awt.Color(125, 96, 57));
         jButton3.setText("Submit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,15 +116,20 @@ public class MenuPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(250, 233, 215));
+        jButton4.setForeground(new java.awt.Color(125, 96, 57));
         jButton4.setText("Cancel");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 243, 230));
         jLabel1.setText("Order : ");
 
+        productSelectorScroll.setBackground(new java.awt.Color(240, 204, 95));
         productSelectorScroll.setMaximumSize(new java.awt.Dimension(500, 300));
         productSelectorScroll.setMinimumSize(new java.awt.Dimension(500, 300));
         productSelectorScroll.setPreferredSize(new java.awt.Dimension(500, 300));
 
+        productSelector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 96, 57)));
         productSelector.setMinimumSize(new java.awt.Dimension(480, 300));
         productSelector.setPreferredSize(new java.awt.Dimension(480, 1000));
         productSelector.setLayout(new java.awt.GridLayout(10, 3));
@@ -127,30 +139,43 @@ public class MenuPanel extends javax.swing.JPanel {
         jScrollPane2.setMinimumSize(new java.awt.Dimension(100, 60));
         jScrollPane2.setPreferredSize(new java.awt.Dimension(100, 60));
 
+        orderPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 96, 57)));
         orderPanel.setMaximumSize(new java.awt.Dimension(100, 200));
         orderPanel.setMinimumSize(new java.awt.Dimension(100, 200));
         orderPanel.setPreferredSize(new java.awt.Dimension(100, 200));
-        orderPanel.setLayout(new java.awt.GridLayout());
+        orderPanel.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane2.setViewportView(orderPanel);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setBackground(new java.awt.Color(255, 243, 230));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(125, 96, 57)));
 
+        jLabel3.setForeground(new java.awt.Color(125, 96, 57));
         jLabel3.setText("Total ");
 
+        jLabel4.setForeground(new java.awt.Color(125, 96, 57));
         jLabel4.setText("Vat");
 
+        jLabel5.setForeground(new java.awt.Color(125, 96, 57));
         jLabel5.setText("Member Discount (10%) ");
 
+        jLabel6.setForeground(new java.awt.Color(125, 96, 57));
         jLabel6.setText("Cash");
 
+        jLabel7.setForeground(new java.awt.Color(125, 96, 57));
         jLabel7.setText("Change");
 
+        jLabel2.setForeground(new java.awt.Color(125, 96, 57));
         jLabel2.setText("0.00");
 
+        jLabel8.setForeground(new java.awt.Color(125, 96, 57));
         jLabel8.setText("0.00");
 
+        jLabel9.setForeground(new java.awt.Color(125, 96, 57));
         jLabel9.setText("0.00");
 
+        jTextField1.setBackground(new java.awt.Color(255, 243, 230));
+
+        jLabel10.setForeground(new java.awt.Color(125, 96, 57));
         jLabel10.setText("0.00");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
