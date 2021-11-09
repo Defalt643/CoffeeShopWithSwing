@@ -17,7 +17,7 @@ public class MainPanel extends javax.swing.JDialog {
     public MainPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        mainDisplayPanel.setViewportView(new LoginPanel());
+        mainDisplayPanel.setViewportView(new LoginPanel(this));
     }
 
     /**
