@@ -55,14 +55,14 @@ public class UserDAO implements DAOInterface<User>{
         Database db = Database.getInstance();
         conn = db.getConnection();
         try {
-            String sql = "SELECT Id,Name,Tel,Password,Role,Username FROM user";
+            String sql = "SELECT Id,Name,Tel,Password,Role,Username FROM User";
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(sql);
             while (result.next()) {
-                int id = result.getInt("id");
-                String name = result.getString("name");
-                String tel = result.getString("tel");
-                String password = result.getString("password");
+                int id = result.getInt("Id");
+                String name = result.getString("Name");
+                String tel = result.getString("Tel");
+                String password = result.getString("Password");
                 String role = result.getString("Role");
                 String username = result.getString("Username");
                 User user = new User(id, name, tel,role, password,username);
