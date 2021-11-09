@@ -5,11 +5,15 @@
  */
 package UI;
 
+import Model.User;
+
 /**
  *
  * @author ming
  */
 public class MainPanel extends javax.swing.JDialog {
+    
+    protected User currentUser = null;
 
     /**
      * Creates new form MainPanel
@@ -18,6 +22,15 @@ public class MainPanel extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         mainDisplayPanel.setViewportView(new LoginPanel(this));
+    }
+    
+    public void logout() {
+        this.currentUser = null;
+        mainDisplayPanel.setViewportView(new LoginPanel(this));
+    }
+    
+    void swichToMenuBarPanel() {
+        mainDisplayPanel.setViewportView(new MenuBarPanel(this));
     }
 
     /**
