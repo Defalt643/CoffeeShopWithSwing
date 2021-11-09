@@ -38,6 +38,16 @@ public class ProductPanel extends javax.swing.JPanel {
         lblName.setText(product.getName());
         lblPrice.setText("" + product.getPrice());
     }
+    
+    private void loadImage() {
+        try {
+            File file = new File(this.product.getImage());
+            BufferedImage image = ImageIO.read(file);
+            btnImg.setIcon(new ImageIcon(image));
+        } catch (IOException ex) {
+            Logger.getLogger(ProductPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,18 +117,22 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
         System.out.println("Product Panel: " + product);
-
-    }//GEN-LAST:event_btnImgActionPerformed
-    private void loadImage() {
-        try {
-            File file = new File(this.product.getImage());
-            BufferedImage image = ImageIO.read(file);
-            btnImg.setIcon(new ImageIcon(image));
-        } catch (IOException ex) {
-            Logger.getLogger(ProductPanel.class.getName()).log(Level.SEVERE, null, ex);
+        for(OnBuyListener subscriber: subscribers) {
+            subscriber.buy(product);
         }
+        
+        
+    }//GEN-LAST:event_btnImgActionPerformed
+    
+    public interface OnBuyListener {
+        public void buy(Product product);
     }
-    MenuPanel menuPanel;
+    
+    public void addOnBuyListener(OnBuyListener subscriber) {
+        subscribers.add(subscriber);
+    }
+    
+    ArrayList<OnBuyListener> subscribers = new ArrayList<>();
     ArrayList<Product> selectedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImg;

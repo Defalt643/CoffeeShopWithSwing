@@ -42,7 +42,8 @@ public class MenuPanel extends javax.swing.JPanel {
         productSelector.setPreferredSize(new Dimension(480,(productSize * 200)));
         for (Product product : productList) {
             ProductPanel p = new ProductPanel(product);
-
+//            p.addOnBuyListener(subscriber);
+//Error
             productSelector.add(p);   
         }
     }
@@ -281,22 +282,8 @@ public class MenuPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-    public void orderLogging() {
-        System.out.println("===============================================");
-//        for(int i=0;i<countedOrders.size();i++){
-//            System.out.println(countedOrders.get(i).toString());
-//        }
-        System.out.println(countedOrders.size());
-        System.out.println(countedOrders.toString());
-        System.out.println("===============================================");
-    }public int checkOrder(Product product) {
-        for (int i = 0; i < countedOrders.size(); i++) {
-            if (product.equals(countedOrders.get(i).getProduct())) {
-                return i;
-            }
-        }
-        return -1;
-    }
+
+    
     public ArrayList<OrderUI> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
