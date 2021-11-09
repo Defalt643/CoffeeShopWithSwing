@@ -6,21 +6,26 @@
 package UI;
 
 import DAO.ProductDAO;
+import Model.Customer;
 import Model.OrderUI;
 import Model.Product;
+import Model.Receipt;
 import Model.ReceiptDetail;
+import Model.User;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import UI.ProductPanel.OnBuyListener;
 
 /**
  *
  * @author ASUS
  */
-public class MenuPanel extends javax.swing.JPanel {
+public class MenuPanel extends javax.swing.JPanel implements OnBuyListener {
 
     private final ArrayList<Product> productList;
     private final ArrayList<ReceiptDetail> receiptDetailList;
+
     /**
      * Creates new form MenuPanel
      */
@@ -38,24 +43,24 @@ public class MenuPanel extends javax.swing.JPanel {
         int productSize = productList.size();
         productSize = productSize / 3 + productSize % 3;
         productSelector.setLayout(new GridLayout(productSize, 3));
-        productSelector.setMinimumSize(new Dimension(480,(productSize * 200)));
-        productSelector.setPreferredSize(new Dimension(480,(productSize * 200)));
+        productSelector.setMinimumSize(new Dimension(480, (productSize * 200)));
+        productSelector.setPreferredSize(new Dimension(480, (productSize * 200)));
         for (Product product : productList) {
             ProductPanel p = new ProductPanel(product);
 //            p.addOnBuyListener(subscriber);
 //Error
-            productSelector.add(p);   
+            productSelector.add(p);
         }
     }
-    
+
     public void generateOrder() {
         int orderSize = receiptDetailList.size();
         orderPanel.setLayout(new GridLayout(orderSize, 1));
-        orderPanel.setMinimumSize(new Dimension(90,(orderSize * 30)));
-        orderPanel.setPreferredSize(new Dimension(90,(orderSize * 30)));
+        orderPanel.setMinimumSize(new Dimension(90, (orderSize * 30)));
+        orderPanel.setPreferredSize(new Dimension(90, (orderSize * 30)));
         for (ReceiptDetail recDetail : receiptDetailList) {
             OrderPanel p = new OrderPanel(recDetail);
-            orderPanel.add(p);   
+            orderPanel.add(p);
         }
     }
 
@@ -307,8 +312,18 @@ public class MenuPanel extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+    private final ArrayList<ReceiptDetail> receipt = ReceiptDetail.testReceiptDetail();
+    @Override
+    public void buy(Product product) {
+        System.out.println("In");
+        System.out.println("");
+        User seller = new User(1,"winwin","0888888888","Employee","password1","user1");
+        Customer customer = new Customer(1,"Somsri","0801111111",0);
+        receiptDetailList.add(new ReceiptDetail(product,1,product.getPrice(),new Receipt(seller,customer)));
+        generateOrder();
 
-    
+    }
+
     public ArrayList<OrderUI> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

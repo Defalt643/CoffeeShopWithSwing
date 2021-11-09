@@ -101,6 +101,8 @@ public class ReceiptDetail {
         list.add(new ReceiptDetail(1, p1, 1, p1.getPrice(), testReceipt));
         list.add(new ReceiptDetail(2, p2, 1, p2.getPrice(), testReceipt));
         list.add(new ReceiptDetail(3, p3, 1, p3.getPrice(), testReceipt));
+        list.add(new ReceiptDetail(4, p1, 1, p1.getPrice(), testReceipt));
+        list.add(new ReceiptDetail(5, p2, 1, p2.getPrice(), testReceipt));
         return list;
     }
     
