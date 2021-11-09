@@ -17,15 +17,17 @@ import java.util.ArrayList;
 public class LoginPanel extends javax.swing.JPanel {
 
     private final ArrayList<User> getLoginList;
-    private static User currentUser = null;
+    private final MainPanel mainPanel;
     /**
      * Creates new form LoginPanel
      */
     public LoginPanel(MainPanel mainPanel) {
         initComponents();
+        this.mainPanel = mainPanel;
         UserDAO uDAO = new UserDAO();
         getLoginList = uDAO.getAll();
         System.out.println(getLoginList.isEmpty());
+        
     }
 
     /**
@@ -106,6 +108,7 @@ public class LoginPanel extends javax.swing.JPanel {
         User user = authenticate(userName, password);
         if(user != null) {
             System.out.println("Pass");
+            mainPanel.swichToMenuBarPanel();
         } else {
             System.out.println("Not Pass");
         }
@@ -119,12 +122,12 @@ public class LoginPanel extends javax.swing.JPanel {
             System.out.println(user.getUsername() + " : input : " + userName);
             System.out.println(user.getPassword() + " : input : " + password);
             if(user.getUsername().equals(userName) && user.getPassword().equals(password)) {
-                currentUser = user;
-                System.out.println("in for " + currentUser);
+                mainPanel.currentUser = user;
+                System.out.println("in for " + mainPanel.currentUser);
                 return user;
             }
         }
-        System.out.println("out for " + currentUser);
+        System.out.println("out for " + mainPanel.currentUser);
         return null;
     }
 
