@@ -34,9 +34,9 @@ public class testMenuDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        testPanel.setMaximumSize(new java.awt.Dimension(800, 400));
-        testPanel.setMinimumSize(new java.awt.Dimension(800, 400));
-        testPanel.setPreferredSize(new java.awt.Dimension(800, 400));
+        testPanel.setMaximumSize(new java.awt.Dimension(900, 500));
+        testPanel.setMinimumSize(new java.awt.Dimension(900, 500));
+        testPanel.setPreferredSize(new java.awt.Dimension(900, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

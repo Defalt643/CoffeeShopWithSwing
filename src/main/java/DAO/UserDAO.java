@@ -66,6 +66,7 @@ public class UserDAO implements DAOInterface<User>{
                 String role = result.getString("Role");
                 String username = result.getString("Username");
                 User user = new User(id, name, tel,role, password,username);
+                list.add(user);
                 System.out.println(id + " " + name + " " + tel +" "+role+ " " +" "+username+" "+password);
             }
         } catch (SQLException ex) {

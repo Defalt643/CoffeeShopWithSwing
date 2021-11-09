@@ -17,6 +17,7 @@ public class MainPanel extends javax.swing.JDialog {
     public MainPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        mainDisplayPanel.setViewportView(new LoginPanel());
     }
 
     /**
@@ -28,21 +29,28 @@ public class MainPanel extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainDisplayPanel = new javax.swing.JScrollPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ok Coffee Shop");
-        setMaximumSize(new java.awt.Dimension(900, 500));
-        setMinimumSize(new java.awt.Dimension(900, 500));
-        setUndecorated(true);
+
+        mainDisplayPanel.setMaximumSize(new java.awt.Dimension(900, 500));
+        mainDisplayPanel.setMinimumSize(new java.awt.Dimension(900, 500));
+        mainDisplayPanel.setPreferredSize(new java.awt.Dimension(900, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -74,6 +82,7 @@ public class MainPanel extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -91,5 +100,6 @@ public class MainPanel extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane mainDisplayPanel;
     // End of variables declaration//GEN-END:variables
 }

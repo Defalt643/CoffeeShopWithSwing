@@ -1,3 +1,4 @@
+UI\LoginPanel$1.class
 UI\SubScribe$2.class
 DAO\CustomerDAO.class
 DAO\ReceiptDAO.class
@@ -23,6 +24,7 @@ UI\testMenuDialog$1$1.class
 database\Database.class
 UI\ReceiptPanel.class
 UI\ManageManagerPanel.class
+UI\ProductPanel$OnBuyListener.class
 UI\CheckStockPanel.class
 Test\TestReceipt.class
 UI\SubScribe$1.class
