@@ -18,8 +18,8 @@ import Model.User;
 public class TestReceipt {
     public static void main(String[] args) {
         //AddProduct2price
-        Product p1 = new Product(1,"Hot Cocoa",55.0);
-        Product p2 = new Product(2,"Hot Mocha",60.0);
+        Product p1 = new Product(1,"Hot Cocoa",55.0,"mockup.png");
+        Product p2 = new Product(2,"Hot Mocha",60.0,"mockup.png");
         //NewSellerUser
         User seller = new User(1,"winwin","0888888888"
                 ,"Employee","password1","user1");

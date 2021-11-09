@@ -7,7 +7,15 @@ package UI;
 
 import Model.OrderUI;
 import Model.Product;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Xenon
@@ -23,6 +31,7 @@ public class ProductPanel extends javax.swing.JPanel {
         initComponents();
         this.product = product;
         setProductData(product);
+        loadImage();
     }
 
     public void setProductData(Product product) {
@@ -98,16 +107,17 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
         System.out.println("Product Panel: " + product);
-        var index = menuPanel.checkOrder(product);
-        if (index == -1) {
-            menuPanel.countedOrders.add(new OrderUI(product, 1));
-        } else {
-            menuPanel.countedOrders.get(index).addAmount();
-        }menuPanel.orderLogging();
-    }//GEN-LAST:event_btnImgActionPerformed
-    
 
-  
+    }//GEN-LAST:event_btnImgActionPerformed
+    private void loadImage() {
+        try {
+            File file = new File(this.product.getImage());
+            BufferedImage image = ImageIO.read(file);
+            btnImg.setIcon(new ImageIcon(image));
+        } catch (IOException ex) {
+            Logger.getLogger(ProductPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     MenuPanel menuPanel;
     ArrayList<Product> selectedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables

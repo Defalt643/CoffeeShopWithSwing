@@ -17,7 +17,7 @@ public class TestProduct {
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
         //TestInsert
-        int id = dao.add(new Product(-1, "Hot Latte", 35.0));
+        int id = dao.add(new Product(-1, "Hot Latte", 35.0,"./asset/IC_Hot_Latte-removebg-preview.png"));
         System.out.println("id : " + id);
         //TestInsertLastProdcut
         Product lastProduct = dao.get(id);

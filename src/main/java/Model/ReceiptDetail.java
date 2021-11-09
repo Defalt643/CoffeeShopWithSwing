@@ -89,9 +89,9 @@ public class ReceiptDetail {
     
      public static ArrayList<ReceiptDetail> testReceiptDetail() {
         ArrayList<ReceiptDetail> list = new ArrayList<>();
-        Product p1 = new Product(1, "Espresso", 45);
-        Product p2 = new Product(2, "Mocha", 45);
-        Product p3 = new Product(3, "Latte", 50);
+        Product p1 = new Product(1, "Espresso", 45,"mockup.png");
+        Product p2 = new Product(2, "Mocha", 45,"mockup.png");
+        Product p3 = new Product(3, "Latte", 50,"mockup.png");
         User seller = new User(1,"winwin","0888888888","Employee","password1","user1");
         Customer customer = new Customer(1,"Somsri","0801111111",0);
         Receipt testReceipt = new Receipt(seller, customer);

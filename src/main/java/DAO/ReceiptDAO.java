@@ -174,7 +174,8 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                  String sqlDetail = "SELECT rd.Id as id,\n"
                         + "       Receipt_id,\n"
                         + "       Product_id,\n"
-                        + "       p.Name as product_name,\n"
+                        + "       p.Image as product_image"
+                         + "      p.Name as product_name,\n"
                         + "       p.Price as product_price, \n"
                         + "       rd.Price as price,\n"
                         + "       amount\n"
@@ -190,8 +191,9 @@ public class ReceiptDAO implements DAOInterface<Receipt>{
                     String productName = resultDetail.getString("product_name");
                     double productPrice = resultDetail.getDouble("product_price");
                     double price = resultDetail.getDouble("price");
+                    String productImage=result.getString("product_image");
                     int amount = resultDetail.getInt("amount");
-                    Product product = new Product(productId, productName, productPrice);
+                    Product product = new Product(productId, productName, productPrice,productImage);
                     receipt.addReceiptDetail(receiveId,product, amount, price);
                 }
                 receipt.setTotal(total);
