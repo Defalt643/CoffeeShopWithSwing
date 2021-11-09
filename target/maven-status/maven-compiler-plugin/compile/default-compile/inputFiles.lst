@@ -1,29 +1,30 @@
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Database\Database.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\DAO\CustomerDAO.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\Receipt.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\SubScribe.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Test\TestProduct.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\TimeinAndTimeoutPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Test\TestCustomer.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Test\TestConnection.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\DAO\UserDAO.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\ManageManagerPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Test\TestUser.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\MenuPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\ReceiptPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\testMenuDialog.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\Product.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\CheckStockPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\OrderPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\ReceiptDetailPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\DAO\DAOInterface.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\ReceiptDetail.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\ProductPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Test\TestReceipt.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\LoginPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\DAO\ReceiptDAO.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\Customer.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\DAO\ProductDAO.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\UI\MainPanel.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\User.java
-C:\Users\Xenon\Documents\SoftDev\OK\ok-project\src\main\java\Model\OrderUI.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\MainPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\DAO\CustomerDAO.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Test\TestReceipt.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Test\TestUser.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\DAO\DAOInterface.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Database\Database.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\ManageManagerPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\ReceiptPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\TimeinAndTimeoutPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\ReceiptDetail.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\OrderUI.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\Receipt.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Test\TestProduct.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\testMenuDialog.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Test\TestCustomer.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Test\TestConnection.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\MenuBarPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\LoginPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\User.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\DAO\UserDAO.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\MenuPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\DAO\ReceiptDAO.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\SubScribe.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\Product.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\ProductPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\CheckStockPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\DAO\ProductDAO.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\OrderPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\UI\ReceiptDetailPanel.java
+C:\Users\ming\OneDrive\BUU YEAR 3 SEMESTER 1\88634159 Software Development\NetBeansProject\ok-project\src\main\java\Model\Customer.java

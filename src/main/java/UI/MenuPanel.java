@@ -15,13 +15,13 @@ import Model.User;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import UI.ProductPanel.OnBuyListener;
+//import UI.ProductPanel.OnBuyListener;
 
 /**
  *
  * @author ASUS
  */
-public class MenuPanel extends javax.swing.JPanel implements OnBuyListener {
+public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
 
     private final ArrayList<Product> productList;
     private final ArrayList<ReceiptDetail> receiptDetailList;
@@ -37,6 +37,7 @@ public class MenuPanel extends javax.swing.JPanel implements OnBuyListener {
         receiptDetailList = ReceiptDetail.testReceiptDetail();
         generateMenu();
         generateOrder();
+        genOrder();
     }
 
     public void generateMenu() {
@@ -56,10 +57,10 @@ public class MenuPanel extends javax.swing.JPanel implements OnBuyListener {
     public void generateOrder() {
         int orderSize = receiptDetailList.size();
         orderPanel.setLayout(new GridLayout(orderSize, 1));
-        orderPanel.setMinimumSize(new Dimension(90, (orderSize * 30)));
-        orderPanel.setPreferredSize(new Dimension(90, (orderSize * 30)));
+        orderPanel.setMinimumSize(new Dimension(90, (orderSize * 50)));
+        orderPanel.setPreferredSize(new Dimension(90, (orderSize * 50)));
         for (ReceiptDetail recDetail : receiptDetailList) {
-            OrderPanel p = new OrderPanel(recDetail);
+            OrderPanel p = new OrderPanel(recDetail,this);
             orderPanel.add(p);
         }
     }
@@ -312,18 +313,62 @@ public class MenuPanel extends javax.swing.JPanel implements OnBuyListener {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-    private final ArrayList<ReceiptDetail> receipt = ReceiptDetail.testReceiptDetail();
-    @Override
-    public void buy(Product product) {
-        System.out.println("In");
-        System.out.println("");
-        User seller = new User(1,"winwin","0888888888","Employee","password1","user1");
-        Customer customer = new Customer(1,"Somsri","0801111111",0);
-        receiptDetailList.add(new ReceiptDetail(product,1,product.getPrice(),new Receipt(seller,customer)));
-        generateOrder();
+//    private final ArrayList<ReceiptDetail> receipt = ReceiptDetail.testReceiptDetail();
+//    @Override
+//    public void buy(Product product) {
+//        System.out.println("In");
+//        System.out.println("");
+//        User seller = new User(1,"winwin","0888888888","Employee","password1","user1");
+//        Customer customer = new Customer(1,"Somsri","0801111111",0);
+//        receiptDetailList.add(new ReceiptDetail(product,1,product.getPrice(),new Receipt(seller,customer)));
+//        generateOrder();
+//
+//    }
 
+    public void genOrder() {
+        orderPanel.removeAll();
+        orderPanel.revalidate();
+        orderPanel.repaint();
+        int orderSize = countedOrders.size();
+        orderPanel.setLayout(new GridLayout(orderSize, 1));
+        orderPanel.setMinimumSize(new Dimension(90, (orderSize * 50)));
+        orderPanel.setPreferredSize(new Dimension(90, (orderSize * 50)));
+        User seller = new User(1, "winwin", "0888888888", "Employee", "password1", "user1");
+        Customer customer = new Customer(1, "Somsri", "0801111111", 0);
+        for (int i = 0; i < countedOrders.size(); i++) {
+            OrderPanel orp = new OrderPanel(new ReceiptDetail(countedOrders.get(i).getProduct(), countedOrders.get(i).getAmount(), countedOrders.get(i).getProduct().getPrice(), new Receipt(seller, customer)),this);
+            orderPanel.add(orp);
+        }
+//        for(OrderUI recDetail : countedOrders){
+//            OrderPanel orp = new OrderPanel(recDetail);
+//            orderPanel.add(orp);
+//        }
+//        for (ReceiptDetail recDetail : receiptDetailList) {
+//            OrderPanel p = new OrderPanel(recDetail);
+//            orderPanel.add(p);
+//        }
     }
 
+    public void addCountedOrder(OrderUI order) {
+        for (int i = 0; i < countedOrders.size(); i++) {
+            if (order.getProduct().getName().equals(countedOrders.get(i).getProduct().getName())) {
+                countedOrders.get(i).addAmount();
+                genOrder();
+                System.out.println(countedOrders.toString());
+                return;
+            }
+        }
+        countedOrders.add(order);
+        genOrder();
+        System.out.println(countedOrders.toString());
+    }public void updateCountedOrders(OrderUI order){
+        for(int i=0;i<countedOrders.size();i++){
+            if(order.getProduct().getName().equals(countedOrders.get(i).getProduct().getName())){
+                countedOrders.get(i).setAmount(order.getAmount());
+                return;
+            }
+        }
+    }
     public ArrayList<OrderUI> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

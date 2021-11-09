@@ -24,7 +24,8 @@ UI\testMenuDialog$1$1.class
 database\Database.class
 UI\ReceiptPanel.class
 UI\ManageManagerPanel.class
-UI\ProductPanel$OnBuyListener.class
+UI\MenuBarPanel$1.class
+UI\MenuBarPanel.class
 UI\CheckStockPanel.class
 Test\TestReceipt.class
 UI\SubScribe$1.class

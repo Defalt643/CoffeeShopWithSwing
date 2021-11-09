@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Model.OrderUI;
 import Model.Product;
 import Model.ReceiptDetail;
 
@@ -15,15 +16,18 @@ import Model.ReceiptDetail;
 public class OrderPanel extends javax.swing.JPanel {
 
     private final ReceiptDetail receiptDetail;
+     private final MenuPanel menuPanel;
+
     /**
      * Creates new form OrderPanel
      */
-    public OrderPanel(ReceiptDetail receiptDetail) {
+    public OrderPanel(ReceiptDetail receiptDetail, MenuPanel menuPanel) {
         initComponents();
         this.receiptDetail = receiptDetail;
+        this.menuPanel = menuPanel;
         setOrderData(receiptDetail);
     }
-    
+
     public void setOrderData(ReceiptDetail receiptDetail) {
         orderLbl.setText(receiptDetail.getProduct().getName());
         amountLbl.setText("" + receiptDetail.getAmount());
@@ -132,12 +136,16 @@ public class OrderPanel extends javax.swing.JPanel {
         if (receiptDetail.getAmount() > 1) {
             receiptDetail.minusAmount(1);
             amountLbl.setText("" + receiptDetail.getAmount());
+            System.out.println(receiptDetail);
+            menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(),receiptDetail.getAmount()));
         }
     }//GEN-LAST:event_minusBtnActionPerformed
 
     private void plusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusBtnActionPerformed
         receiptDetail.addAmount(1);
         amountLbl.setText("" + receiptDetail.getAmount());
+        System.out.println(receiptDetail);
+        menuPanel.updateCountedOrders(new OrderUI(receiptDetail.getProduct(),receiptDetail.getAmount()));
     }//GEN-LAST:event_plusBtnActionPerformed
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed

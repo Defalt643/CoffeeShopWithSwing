@@ -126,8 +126,9 @@ public class ProductPanel extends javax.swing.JPanel {
 
     private void btnImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImgActionPerformed
         System.out.println("Product Panel: " + product);
-        menuPanel.countedOrders.add(new OrderUI(product, 1));
-        System.out.println(menuPanel.countedOrders.toString());
+        menuPanel.addCountedOrder(new OrderUI(product, 1));
+//        System.out.println(menuPanel.countedOrders.toString());
+//        System.out.println("\n\n");
 //        for(OnBuyListener subscriber: subscribers) {
 //            subscriber.buy(product);
 //        }
