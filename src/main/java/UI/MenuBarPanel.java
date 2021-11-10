@@ -38,11 +38,13 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btnOut = new javax.swing.JButton();
         currentUserName = new javax.swing.JLabel();
         currentUserRole = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         containerScroll = new javax.swing.JScrollPane();
-        screenContainer = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnSell = new javax.swing.JButton();
+        btnManageUser = new javax.swing.JButton();
+        btnStock = new javax.swing.JButton();
+        btnInOut = new javax.swing.JButton();
+        btn4 = new javax.swing.JButton();
+        btn5 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(900, 500));
@@ -91,29 +93,66 @@ public class MenuBarPanel extends javax.swing.JPanel {
                     .addGroup(currentUserContainerLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnOut, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         containerScroll.setMinimumSize(new java.awt.Dimension(910, 510));
         containerScroll.setPreferredSize(new java.awt.Dimension(910, 510));
 
-        screenContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        screenContainer.setMaximumSize(new java.awt.Dimension(900, 500));
-        screenContainer.setMinimumSize(new java.awt.Dimension(900, 500));
-        screenContainer.setPreferredSize(new java.awt.Dimension(900, 500));
+        btnSell.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnSell.setText("Point of Sell");
+        btnSell.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnSell.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnSell.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnSell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSellActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout screenContainerLayout = new javax.swing.GroupLayout(screenContainer);
-        screenContainer.setLayout(screenContainerLayout);
-        screenContainerLayout.setHorizontalGroup(
-            screenContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        screenContainerLayout.setVerticalGroup(
-            screenContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
-        );
+        btnManageUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnManageUser.setText("Manage User");
+        btnManageUser.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnManageUser.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnManageUser.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnManageUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageUserActionPerformed(evt);
+            }
+        });
 
-        containerScroll.setViewportView(screenContainer);
+        btnStock.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnStock.setText("Manage Stock");
+        btnStock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnStock.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnStock.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnStock.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStockActionPerformed(evt);
+            }
+        });
+
+        btnInOut.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnInOut.setText("In-Out Time");
+        btnInOut.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnInOut.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnInOut.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnInOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInOutActionPerformed(evt);
+            }
+        });
+
+        btn4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn4.setMaximumSize(new java.awt.Dimension(107, 52));
+        btn4.setMinimumSize(new java.awt.Dimension(107, 52));
+        btn4.setPreferredSize(new java.awt.Dimension(107, 52));
+
+        btn5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btn5.setMaximumSize(new java.awt.Dimension(107, 52));
+        btn5.setMinimumSize(new java.awt.Dimension(107, 52));
+        btn5.setPreferredSize(new java.awt.Dimension(107, 52));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,16 +161,22 @@ public class MenuBarPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(containerScroll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(containerScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnManageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(323, 323, 323)
+                        .addComponent(btnStock, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnInOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(currentUserContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,12 +184,17 @@ public class MenuBarPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(currentUserContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(containerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,17 +204,50 @@ public class MenuBarPanel extends javax.swing.JPanel {
         currentUserRole.setText("Role");
     }//GEN-LAST:event_btnOutActionPerformed
 
+    private void btnManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserActionPerformed
+        containerScroll.setViewportView(new ManageManagerPanel());
+        enableAllBtn();
+        btnManageUser.setEnabled(false);
+    }//GEN-LAST:event_btnManageUserActionPerformed
 
+    private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
+        containerScroll.setViewportView(new MenuPanel());
+        enableAllBtn();
+        btnSell.setEnabled(false);
+    }//GEN-LAST:event_btnSellActionPerformed
+
+    private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
+        containerScroll.setViewportView(new CheckStockPanel());
+        enableAllBtn();
+        btnStock.setEnabled(false);
+    }//GEN-LAST:event_btnStockActionPerformed
+
+    private void btnInOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInOutActionPerformed
+        containerScroll.setViewportView(new TimeinAndTimeoutPanel());
+        enableAllBtn();
+        btnInOut.setEnabled(false);
+    }//GEN-LAST:event_btnInOutActionPerformed
+
+    private void enableAllBtn() {
+        btnSell.setEnabled(true);
+        btnManageUser.setEnabled(true);
+        btnStock.setEnabled(true);
+        btnInOut.setEnabled(true);
+        btn4.setEnabled(true);
+        btn5.setEnabled(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn4;
+    private javax.swing.JButton btn5;
+    private javax.swing.JButton btnInOut;
+    private javax.swing.JButton btnManageUser;
     private javax.swing.JButton btnOut;
+    private javax.swing.JButton btnSell;
+    private javax.swing.JButton btnStock;
     private javax.swing.JScrollPane containerScroll;
     private javax.swing.JPanel currentUserContainer;
     private javax.swing.JLabel currentUserName;
     private javax.swing.JLabel currentUserRole;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JPanel screenContainer;
     // End of variables declaration//GEN-END:variables
 }
