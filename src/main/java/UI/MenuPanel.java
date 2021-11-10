@@ -14,6 +14,7 @@ import Model.ReceiptDetail;
 import Model.User;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 //import UI.ProductPanel.OnBuyListener;
 
@@ -92,10 +93,12 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        vat = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        cash = new javax.swing.JTextField();
+        change = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        grandTotal = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
@@ -178,16 +181,47 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         total.setForeground(new java.awt.Color(125, 96, 57));
         total.setText("0.00");
 
-        jLabel8.setForeground(new java.awt.Color(125, 96, 57));
-        jLabel8.setText("0.00");
+        vat.setForeground(new java.awt.Color(125, 96, 57));
+        vat.setText("0.00");
 
         jLabel9.setForeground(new java.awt.Color(125, 96, 57));
         jLabel9.setText("0.00");
 
-        jTextField1.setBackground(new java.awt.Color(255, 243, 230));
+        cash.setBackground(new java.awt.Color(255, 243, 230));
+        cash.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cashFocusLost(evt);
+            }
+        });
+        cash.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                cashInputMethodTextChanged(evt);
+            }
+        });
+        cash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashActionPerformed(evt);
+            }
+        });
+        cash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cashKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cashKeyTyped(evt);
+            }
+        });
 
-        jLabel10.setForeground(new java.awt.Color(125, 96, 57));
-        jLabel10.setText("0.00");
+        change.setForeground(new java.awt.Color(125, 96, 57));
+        change.setText("0.00");
+
+        jLabel2.setForeground(new java.awt.Color(125, 96, 57));
+        jLabel2.setText("Grand Total");
+
+        grandTotal.setForeground(new java.awt.Color(125, 96, 57));
+        grandTotal.setText("0.00");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -203,7 +237,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8))
+                        .addComponent(vat))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,11 +245,15 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10))
+                        .addComponent(change))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cash, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(grandTotal)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -226,21 +264,28 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                     .addComponent(jLabel3)
                     .addComponent(total))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel8))
+                    .addComponent(vat, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel9))
-                .addGap(32, 32, 32)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(grandTotal)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel10))
+                    .addComponent(change))
                 .addContainerGap())
         );
 
@@ -322,6 +367,35 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private void orderPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderPanelMouseEntered
         updateTotal();
     }//GEN-LAST:event_orderPanelMouseEntered
+
+    private void cashInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cashInputMethodTextChanged
+
+    }//GEN-LAST:event_cashInputMethodTextChanged
+
+    private void cashFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cashFocusLost
+
+    }//GEN-LAST:event_cashFocusLost
+
+    private void cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cashActionPerformed
+
+
+    private void cashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cashKeyTyped
+
+    }//GEN-LAST:event_cashKeyTyped
+
+    private void cashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cashKeyReleased
+        try{
+            double grandTotalPrice = Double.parseDouble(grandTotal.getText());
+            double cash = Double.parseDouble(this.cash.getText());
+            System.out.println(cash);
+            this.change.setText(String.valueOf(new DecimalFormat("##.##").format(cash - grandTotalPrice)));
+        }catch(Exception e){
+            System.out.println("Cash must be not null or empty.\n"+e);
+        }
+        
+    }//GEN-LAST:event_cashKeyReleased
 //    private final ArrayList<ReceiptDetail> receipt = ReceiptDetail.testReceiptDetail();
 //    @Override
 //    public void buy(Product product) {
@@ -390,30 +464,34 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
             total += countedOrders.get(i).getPrice() * countedOrders.get(i).getAmount();
         }
         this.total.setText(String.valueOf(total));
+        vat.setText(new DecimalFormat("##.##").format(total * 0.07));
+        grandTotal.setText(String.valueOf(total + Double.parseDouble(vat.getText())));
     }
     public ArrayList<OrderUI> countedOrders = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cash;
+    private javax.swing.JLabel change;
+    private javax.swing.JLabel grandTotal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel orderPanel;
     private javax.swing.JPanel productSelector;
     private javax.swing.JScrollPane productSelectorScroll;
     private javax.swing.JLabel total;
+    private javax.swing.JLabel vat;
     // End of variables declaration//GEN-END:variables
 }
