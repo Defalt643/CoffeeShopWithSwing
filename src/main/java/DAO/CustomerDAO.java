@@ -52,7 +52,7 @@ public class CustomerDAO implements DAOInterface<Customer>{
         Database db = Database.getInstance();
         conn = db.getConnection();
         try {
-            String sql = "SELECT Id,Name,Tel,Purchase_amount FROM customer";
+            String sql = "SELECT Id,Name,Tel,Purchase_amount FROM Customer";
             Statement stmt = conn.createStatement();
             ResultSet result = stmt.executeQuery(sql);
             while (result.next()) {
@@ -60,7 +60,7 @@ public class CustomerDAO implements DAOInterface<Customer>{
                 String name = result.getString("Name");
                 String tel = result.getString("Tel");
                 int purchase_amount= result.getInt("Purchase_amount");
-                Customer customer = new Customer(id,name,tel,purchase_amount);
+                list.add(new Customer(id,name,tel,purchase_amount));
                 System.out.println(id + " " + name + " " + tel+" "+purchase_amount);
             }
         } catch (SQLException ex) {

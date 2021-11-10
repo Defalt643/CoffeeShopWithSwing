@@ -28,6 +28,7 @@ public class ManageManagerPanel extends javax.swing.JPanel {
         checkAllUser();
         disableUI();
     }
+
     public void disableUI() {
         inputID.setVisible(false);
         inputName.setVisible(false);
@@ -331,18 +332,18 @@ public class ManageManagerPanel extends javax.swing.JPanel {
         UserDAO dao = new UserDAO();
         if (index > -1) {
             enableUI();
-            User user = dao.get(index+1);
+            User user = dao.get(index + 1);
             inputID.setText(String.valueOf(user.getId()));
             inputName.setText(user.getName());
             inputPassword.setText(user.getPassword());
             inputUsername.setText(user.getUsername());
             inputTel.setText(user.getTel());
-            if(user.getRole().equals("Manager")){
+            if (user.getRole().equals("Manager")) {
                 roleComboBox.setSelectedIndex(1);
-            }else{
+            } else {
                 roleComboBox.setSelectedIndex(0);
             }
-            
+
         } else {
             errorMessage.setText("You must select a row in table to edit user!");
         }
@@ -370,22 +371,22 @@ public class ManageManagerPanel extends javax.swing.JPanel {
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         enableUI();
-        inputID.setText(String.valueOf(user.getAll().size()+1));
+        inputID.setText(String.valueOf(user.getAll().size() + 1));
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         UserDAO dao = new UserDAO();
-        index =userTable.getSelectedRow();
-        if(index ==-1){
+        index = userTable.getSelectedRow();
+        if (index == -1) {
             errorMessage.setText("You must select a row in table to delete user!");
-        }else{
-            User user= dao.get(index+1);
+        } else {
+            User user = dao.get(index + 1);
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure?\nUser \""
-                + user.getUsername() + "\" will delete this process cannot be undone!!!", "Delete User", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            dao.delete(index+1);
-            checkAllUser();
-        }
+                    + user.getUsername() + "\" will delete this process cannot be undone!!!", "Delete User", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                dao.delete(index + 1);
+                checkAllUser();
+            }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
