@@ -29,7 +29,7 @@ public class ProductDAO implements DAOInterface<Product>{
         con=db.getConnection();
         int id=-1;
         try{
-            String insertQuery = "INSERT INTO Product(Name,Price,Image) VALUES(?,?)";
+            String insertQuery = "INSERT INTO Product(Name,Price,Image) VALUES(?,?,?)";
             PreparedStatement smt = con.prepareStatement(insertQuery);
             smt.setString(1, object.getName());
             smt.setDouble(2, object.getPrice());
@@ -125,8 +125,8 @@ public class ProductDAO implements DAOInterface<Product>{
             Product product = new Product(object.getId(),object.getName(),object.getPrice(),object.getImage());
             statement.setString(1, product.getName());
             statement.setDouble(2,product.getPrice());
-            statement.setInt(3, product.getId());
-            statement.setString(4, product.getImage());
+            statement.setString(3, product.getImage());
+            statement.setInt(4, product.getId());
             row = statement.executeUpdate();
             System.out.println("Affect row " + row);
         }catch(SQLException ex){
