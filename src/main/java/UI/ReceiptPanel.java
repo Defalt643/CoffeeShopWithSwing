@@ -5,6 +5,7 @@
  */
 package UI;
 
+import DAO.CustomerDAO;
 import DAO.ReceiptDAO;
 import DAO.UserDAO;
 import Model.Customer;
@@ -405,6 +406,9 @@ public class ReceiptPanel extends javax.swing.JPanel {
         }
         int index = dao.getAll().size()+2;
         Receipt receipt = new Receipt(index,time,userList.get(userIndex),customer);
+        customer.setPurchase_amount(customer.getPurchase_amount()+1);
+        CustomerDAO cusDAO = new CustomerDAO();
+        cusDAO.update(customer);
         for(int i=0;i<countedOrder.size();i++){
             receipt.addReceiptDetail(countedOrder.get(i).getProduct(), countedOrder.get(i).getAmount());
         }
