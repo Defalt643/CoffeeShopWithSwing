@@ -5,17 +5,33 @@
  */
 package UI;
 
+import DAO.ProductDAO;
+import javax.swing.table.DefaultTableModel;
+
+
+
 /**
  *
  * @author ASUS
  */
 public class CheckStockPanel extends javax.swing.JPanel {
-
+    ProductDAO product = new ProductDAO();
     /**
      * Creates new form CheckStockPanel
      */
     public CheckStockPanel() {
         initComponents();
+        jButton1.setEnabled(false);
+        jTextField1.setEditable(false);
+        checkStock();
+    }
+    
+    public void checkStock(){
+        DefaultTableModel model = (DefaultTableModel) jTableCheckStock.getModel();
+        for(int i=0;i<product.getAll().size();i++){
+            model.addRow(new Object[]{product.getAll().get(i).getId(),product.getAll().get(i).getName()
+                    ,product.getAll().get(i).getPrice()});
+        }
     }
 
     /**
@@ -28,25 +44,30 @@ public class CheckStockPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCheckStock = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCheckStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NAME", "PRICE"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableCheckStock);
 
         jButton1.setText("OK");
 
@@ -57,7 +78,7 @@ public class CheckStockPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -68,7 +89,7 @@ public class CheckStockPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(jTextField1))
@@ -82,7 +103,7 @@ public class CheckStockPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableCheckStock;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
