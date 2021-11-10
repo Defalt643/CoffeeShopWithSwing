@@ -5,7 +5,10 @@
  */
 package UI;
 
+import Model.Customer;
+import Model.OrderUI;
 import Model.User;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +17,15 @@ import Model.User;
 public class MenuBarPanel extends javax.swing.JPanel {
 
     private final MainPanel mainPanel;
-
+    public ArrayList<OrderUI> countedOrder;
+    public double grandTotal;
+    public double total;
+    public double cash;
+    public double discount;
+    public Customer customer;
+    public double vat;
+    public double change;
+    public String username;
     /**
      * Creates new form MenuBarPanel
      */
@@ -23,6 +34,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
         this.mainPanel = mainPanel;
         currentUserName.setText(mainPanel.currentUser.getName());
         currentUserRole.setText(mainPanel.currentUser.getRole());
+        username= mainPanel.currentUser.getName();
     }
 
     /**
@@ -90,9 +102,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
                         .addComponent(currentUserRole)
                         .addGap(1, 1, 1)
                         .addComponent(currentUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(currentUserContainerLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnOut, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnOut, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -188,9 +198,8 @@ public class MenuBarPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnManageUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnInOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnInOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(containerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,17 +220,34 @@ public class MenuBarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageUserActionPerformed
 
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
-        containerScroll.setViewportView(new MenuPanel());
+        containerScroll.setViewportView(new MenuPanel(this));
         enableAllBtn();
         btnSell.setEnabled(false);
     }//GEN-LAST:event_btnSellActionPerformed
+    public void switchToReceipt() {
+        containerScroll.setViewportView(new ReceiptPanel(this));
+    }
 
+    public void switchToPointOfSell() {
+        containerScroll.setViewportView(new MenuPanel(this));
+        enableAllBtn();
+        btnSell.setEnabled(false);
+    }
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
         containerScroll.setViewportView(new CheckStockPanel());
         enableAllBtn();
         btnStock.setEnabled(false);
     }//GEN-LAST:event_btnStockActionPerformed
-
+    public void setReceiptDetail(ArrayList<OrderUI> countedOrder, double total, double grandTotal, double cash, double discount, double vat, double change, Customer customer) {
+        this.countedOrder = countedOrder;
+        this.total = total;
+        this.grandTotal = grandTotal;
+        this.cash = cash;
+        this.discount = discount;
+        this.vat = vat;
+        this.customer = customer;
+        this.change = change;
+    }
     private void btnInOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInOutActionPerformed
         containerScroll.setViewportView(new TimeinAndTimeoutPanel());
         enableAllBtn();
@@ -236,7 +262,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btn4.setEnabled(true);
         btn5.setEnabled(true);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn4;
     private javax.swing.JButton btn5;

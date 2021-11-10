@@ -17,8 +17,8 @@ public class testMenuDialog extends javax.swing.JDialog {
     public testMenuDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        MenuPanel menuPanel = new MenuPanel();
-        testPanel.setViewportView(new MenuPanel());
+//        MenuPanel menuPanel = new MenuPanel();
+//        testPanel.setViewportView(new MenuPanel());
         
     }
 

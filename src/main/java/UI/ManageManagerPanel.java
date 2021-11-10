@@ -115,6 +115,12 @@ public class ManageManagerPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
 
+        jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jScrollPane1ComponentShown(evt);
+            }
+        });
+
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -258,9 +264,9 @@ public class ManageManagerPanel extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(newButton)
-                                .addGap(18, 18, 18)
+                                .addGap(24, 24, 24)
                                 .addComponent(saveButton)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(deleteButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(editButton)
@@ -309,7 +315,7 @@ public class ManageManagerPanel extends javax.swing.JPanel {
                     .addComponent(errorMessage)
                     .addComponent(saveButton)
                     .addComponent(newButton))
-                .addContainerGap(5, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -389,6 +395,10 @@ public class ManageManagerPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void jScrollPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1ComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -28,13 +28,15 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
 
     private final ArrayList<Product> productList;
     private final ArrayList<ReceiptDetail> receiptDetailList;
-
+    private final MenuBarPanel menuBarPanel;
+    
     /**
      * Creates new form MenuPanel
      */
-    public MenuPanel() {
+    public MenuPanel(MenuBarPanel menuBarPanel) {
         this.member = false;
-        this.customer = new Customer("mockup", "08888888");
+        this.customer = new Customer("Non member", "08888888");
+        this.menuBarPanel = menuBarPanel;
         initComponents();
         //Call Menu data from Mockup(DB)
         ProductDAO pDAO = new ProductDAO();
@@ -83,7 +85,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         productSelectorScroll = new javax.swing.JScrollPane();
@@ -123,12 +125,12 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         jButton1.setForeground(new java.awt.Color(125, 96, 57));
         jButton1.setText("Register");
 
-        jButton3.setBackground(new java.awt.Color(250, 233, 215));
-        jButton3.setForeground(new java.awt.Color(125, 96, 57));
-        jButton3.setText("Submit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setBackground(new java.awt.Color(250, 233, 215));
+        submitButton.setForeground(new java.awt.Color(125, 96, 57));
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -347,7 +349,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(6, 125, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(submitButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addContainerGap())))
@@ -372,7 +374,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))
@@ -398,9 +400,11 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        //ArrayList<OrderUI> countedOrder,double total,double grandTotal,double cash,double discount,double vat,Customer customer
+        menuBarPanel.setReceiptDetail(countedOrders, Double.parseDouble(total.getText()), Double.parseDouble(grandTotal.getText()), Double.parseDouble(cash.getText()), Double.parseDouble(discount.getText()), Double.parseDouble(vat.getText()),Double.parseDouble(change.getText()), customer);
+        menuBarPanel.switchToReceipt();
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     private void orderPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderPanelMouseEntered
         updateTotal();
@@ -415,7 +419,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     }//GEN-LAST:event_cashFocusLost
 
     private void cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cashActionPerformed
 
 
@@ -556,7 +560,6 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private javax.swing.JTextField inputPhoneNumber;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -573,6 +576,7 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
     private javax.swing.JPanel productSelector;
     private javax.swing.JScrollPane productSelectorScroll;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton submitButton;
     private javax.swing.JLabel textMember;
     private javax.swing.JLabel total;
     private javax.swing.JLabel vat;
