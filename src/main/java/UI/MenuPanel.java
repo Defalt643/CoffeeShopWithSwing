@@ -389,7 +389,6 @@ public class MenuPanel extends javax.swing.JPanel /*implements OnBuyListener*/ {
         try{
             double grandTotalPrice = Double.parseDouble(grandTotal.getText());
             double cash = Double.parseDouble(this.cash.getText());
-            System.out.println(cash);
             this.change.setText(String.valueOf(new DecimalFormat("##.##").format(cash - grandTotalPrice)));
         }catch(Exception e){
             System.out.println("Cash must be not null or empty.\n"+e);

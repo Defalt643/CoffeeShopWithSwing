@@ -128,13 +128,15 @@ public class UserDAO implements DAOInterface<User>{
         try {
             String sql = "UPDATE User SET Id = ?,Name = ?,Tel = ?,Password = ?,Role = ?,Username = ? WHERE Id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, object.getName());
-            stmt.setString(2, object.getTel());
-            stmt.setString(3, object.getPassword());
-            stmt.setString(4, object.getRole());
-            stmt.setString(5,object.getUsername());
-            stmt.setInt(6, object.getId());
+            stmt.setInt(1, object.getId());
+            stmt.setString(2, object.getName());
+            stmt.setString(3, object.getTel());
+            stmt.setString(4, object.getPassword());
+            stmt.setString(5, object.getRole());
+            stmt.setString(6,object.getUsername());
+            stmt.setInt(7, object.getId());
             row = stmt.executeUpdate();
+            System.out.println("Update successfully");
         } catch (SQLException ex) {
             System.out.println("ERROR : SQLException");
         }
