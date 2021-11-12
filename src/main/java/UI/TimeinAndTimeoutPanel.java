@@ -76,6 +76,8 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Name :");
 
+        jScrollPane2.setBackground(new java.awt.Color(153, 153, 153));
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
