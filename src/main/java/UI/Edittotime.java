@@ -37,6 +37,8 @@ public class Edittotime extends javax.swing.JPanel {
         PasswordField1 = new javax.swing.JPasswordField();
         StatustextField1 = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("ID           :");
         jLabel1.setToolTipText("");
@@ -50,6 +52,7 @@ public class Edittotime extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Status     :");
 
+        jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.focus"));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
