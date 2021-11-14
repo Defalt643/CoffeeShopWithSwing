@@ -269,6 +269,11 @@ public class ManageCheckStock extends javax.swing.JPanel {
         
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        if (jTextField1.getText() == null) {
+            int reply = JOptionPane.showConfirmDialog(null, "please input ID ", "File ID ", JOptionPane.DEFAULT_OPTION);
+            return;
+        } 
         int TextToInt = Integer.parseInt(jTextField1.getText());
         for (int i = 0; i < product.getAll().size(); i++) {
             if (TextToInt == product.getAll().get(i).getId()) {

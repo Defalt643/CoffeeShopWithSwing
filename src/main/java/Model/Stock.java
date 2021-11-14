@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Model;
+
+/**
+ *
+ * @author A_R_T
+ */
+public class Stock {
+    private int id,unit;
+    private String name;
+    private double price;
+
+    public Stock(int id, int unit, String name, double price) {
+        this.id = id;
+        this.unit = unit;
+        this.name = name;
+        this.price = price;
+    }
+    public Stock(int unit, String name, double price) {
+        this.id = -1;
+        this.unit = unit;
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Stock{" + "id=" + id + ", unit=" + unit + ", name=" + name + ", price=" + price + '}';
+    }
+       
+}
