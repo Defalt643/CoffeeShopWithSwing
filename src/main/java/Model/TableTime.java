@@ -12,15 +12,34 @@ import java.util.Date;
  * @author Acer
  */
 public class TableTime {
-    private int id;
-    private String username;
-    
 
-    public TableTime(int id, String username) {
+    private int id;
+    private String name, time, status;
+
+    public TableTime(int id, String name, String time, String status) {
         this.id = id;
-        this.username = username;
+        this.name = name;
+        this.time = time;
+        this.status = status;
+    }
+    
+    public String getTime() {
+        return time;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+   
     public int getId() {
         return id;
     }
@@ -29,19 +48,17 @@ public class TableTime {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String username) {
+        this.name = username;
     }
 
     @Override
     public String toString() {
-        return "TableTime{" + "id=" + id + ", username=" + username + '}';
+        return "TableTime{" + "id=" + id + ", username=" + name + ", time=" + time + ", status=" + status + '}';
     }
-   
-    
-    
+
 }
