@@ -268,7 +268,12 @@ public class ManageCheckStock extends javax.swing.JPanel {
     }//GEN-LAST:event_ButAddActionPerformed
 
     private void ButSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSaveActionPerformed
-
+        StockDAO stock = new StockDAO();
+        int q = Integer.parseInt(InputUnit.getText());
+        double p = Double.parseDouble(InputPrice.getText());
+        if(index == -1){
+            stock.add(new Stock(-1,q,InputName.getText(),p));
+        }
     }//GEN-LAST:event_ButSaveActionPerformed
     public void Clear() {
         jTextField1.setText("");
@@ -292,6 +297,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
 
     private void ButCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCancelActionPerformed
         Clear();
+        Hide();
     }//GEN-LAST:event_ButCancelActionPerformed
 
 
