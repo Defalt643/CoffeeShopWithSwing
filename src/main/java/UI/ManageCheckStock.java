@@ -19,7 +19,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
 
     private int index = -1;
     StockDAO stock = new StockDAO();
-    int id = -1;
+    int id = 1;
 
     /**
      * Creates new form CheckStockPanel
@@ -237,7 +237,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?"
                     + "", "Delete Product", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                stock.delete(index);
+                stock.delete(index+1);
 
             }
         }
@@ -251,10 +251,11 @@ public class ManageCheckStock extends javax.swing.JPanel {
             return;
         } else if (index > -1) {
             Show();
-            ArrayList<Stock> product = this.stock.getAll();
+            ArrayList<Stock> stock = this.stock.getAll();
             id = stock.get(index).getId();
             InputName.setText(stock.get(index).getName());
             InputPrice.setText(String.valueOf(stock.get(index).getPrice()));
+            InputUnit.setText(String.valueOf(stock.get(index).getUnit()));
 
         } else {
             System.out.println("Can't Edit");
@@ -273,7 +274,13 @@ public class ManageCheckStock extends javax.swing.JPanel {
         double p = Double.parseDouble(InputPrice.getText());
         if(index == -1){
             stock.add(new Stock(-1,q,InputName.getText(),p));
+        }else{
+            stock.update(new Stock(index+1,q,InputName.getText(),p));
         }
+        
+        Clear();
+        checkStock();
+        Hide();
     }//GEN-LAST:event_ButSaveActionPerformed
     public void Clear() {
         jTextField1.setText("");
