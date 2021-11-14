@@ -54,14 +54,14 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         settime = new javax.swing.JLabel();
         btneadd = new javax.swing.JButton();
-        btnedit1 = new javax.swing.JButton();
-        btnedit2 = new javax.swing.JButton();
+        btneditlogin = new javax.swing.JButton();
+        btnedittime = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         btnedit3 = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(800, 400));
-        setMinimumSize(new java.awt.Dimension(800, 400));
-        setPreferredSize(new java.awt.Dimension(800, 400));
+        setMaximumSize(new java.awt.Dimension(800, 440));
+        setMinimumSize(new java.awt.Dimension(800, 440));
+        setPreferredSize(new java.awt.Dimension(800, 440));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -122,19 +122,29 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         btneadd.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
         btneadd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btneadd.setText("Add");
-
-        btnedit1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnedit1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnedit1.setText("Edit");
-        btnedit1.addActionListener(new java.awt.event.ActionListener() {
+        btneadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnedit1ActionPerformed(evt);
+                btneaddActionPerformed(evt);
             }
         });
 
-        btnedit2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnedit2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnedit2.setText("Edit");
+        btneditlogin.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
+        btneditlogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btneditlogin.setText("Edit");
+        btneditlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditloginActionPerformed(evt);
+            }
+        });
+
+        btnedittime.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
+        btnedittime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnedittime.setText("Edit");
+        btnedittime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnedittimeActionPerformed(evt);
+            }
+        });
 
         btndelete.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
         btndelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -168,14 +178,14 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                             .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnedit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btneditlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(6, 6, 6))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btneadd, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnedit2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnedittime, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,7 +201,7 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(btnedit1))
+                            .addComponent(btneditlogin))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,10 +213,10 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btneadd)
-                    .addComponent(btnedit2)
+                    .addComponent(btnedittime)
                     .addComponent(btndelete)
                     .addComponent(btnedit3))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -227,21 +237,29 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         jTextField2.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnedit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedit1ActionPerformed
+    private void btneditloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnedit1ActionPerformed
+    }//GEN-LAST:event_btneditloginActionPerformed
 
     private void btnedit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedit3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnedit3ActionPerformed
 
+    private void btneaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneaddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btneaddActionPerformed
+
+    private void btnedittimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedittimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnedittimeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btneadd;
-    private javax.swing.JButton btnedit1;
-    private javax.swing.JButton btnedit2;
     private javax.swing.JButton btnedit3;
+    private javax.swing.JButton btneditlogin;
+    private javax.swing.JButton btnedittime;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
