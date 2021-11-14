@@ -72,19 +72,68 @@ public class StockDAO implements DAOInterface<Stock>{
 
     @Override
     public Stock get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = null;
+        Database db = Database.getInstance();
+        con=db.getConnection();
+        try{
+            String query = "SELECT ID,Name,Price,Unit FROM Stock WHERE ID="+id;
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+            while(result.next()){
+                int pid = result.getInt("ID");
+                String name = result.getString("Name");
+                double price = result.getDouble("Price");
+                int unit = result.getInt("Unit");
+                Stock stock = new Stock(pid,unit,name,price);
+                return stock;
+            }
+        }catch(SQLException ex){
+            System.out.println("ERROR : SQLException");
+        }
+        db.close();
+        return null;
     }
 
     @Override
     public int delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = null;
+        Database db = Database.getInstance();
+        con=db.getConnection();
+        int row=0;
+        try{
+            String updateQuery = "DELETE FROM Stock WHERE ID=?";
+            PreparedStatement statement = con.prepareStatement(updateQuery);
+            statement.setInt(1, id);
+            row = statement.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println("ERROR : SQLException");
+        }
+        db.close();
+        return row;
     }
 
     @Override
     public int update(Stock object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+        Connection con = null;
+        Database db = Database.getInstance();
+        con=db.getConnection();
+        int row = 0;
+        try{
+            String updateQuery = "UPDATE Stock SET Name =?,Price =?,Unit=? WHERE ID =?";
+            PreparedStatement statement = con.prepareStatement(updateQuery);
+            Stock stock = new Stock(object.getId(),object.getUnit(),object.getName(),object.getPrice());
+            statement.setString(1, object.getName());
+            statement.setDouble(2,object.getPrice());
+            statement.setInt(3, object.getUnit());
+            statement.setInt(4, object.getId());
+            row = statement.executeUpdate();
+            System.out.println("Affect row " + row);
+        }catch(SQLException ex){
+            System.out.println("ERROR : SQLException");
+        }
+        db.close();
+        return row;
+}
 }
 
  
