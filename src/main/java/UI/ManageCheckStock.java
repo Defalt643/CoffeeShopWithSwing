@@ -5,22 +5,22 @@
  */
 package UI;
 
-import DAO.ProductDAO;
-import Model.Product;
+import DAO.StockDAO;
+import Model.Stock;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-
 
 /**
  *
  * @author ASUS
  */
 public class ManageCheckStock extends javax.swing.JPanel {
+
     private int index = -1;
-    ProductDAO product = new ProductDAO();
+    StockDAO stock = new StockDAO();
     int id = -1;
+
     /**
      * Creates new form CheckStockPanel
      */
@@ -29,22 +29,24 @@ public class ManageCheckStock extends javax.swing.JPanel {
         Hide();
         checkStock();
     }
-    
-    public void checkStock(){
+
+    public void checkStock() {
         DefaultTableModel model = (DefaultTableModel) jTableCheckStock.getModel();
         model.setRowCount(0);
-        for (int i = 0; i < product.getAll().size(); i++) {
-            model.addRow(new Object[]{product.getAll().get(i).getId(), product.getAll().get(i).getName(),
-                product.getAll().get(i).getPrice()});
+        for (int i = 0; i < stock.getAll().size(); i++) {
+            model.addRow(new Object[]{stock.getAll().get(i).getId(),
+                stock.getAll().get(i).getName(),
+                stock.getAll().get(i).getPrice(),
+                stock.getAll().get(i).getUnit()});
         }
     }
-    
-     public void Hide() {
+
+    public void Hide() {
         ButSave.setEnabled(false);
         ButCancel.setEnabled(false);
         InputName.setEditable(false);
         InputPrice.setEditable(false);
-        
+        InputUnit.setEditable(false);
     }
 
     public void Show() {
@@ -52,9 +54,10 @@ public class ManageCheckStock extends javax.swing.JPanel {
         ButCancel.setEnabled(true);
         InputName.setEditable(true);
         InputPrice.setEditable(true);
-       
+        InputUnit.setEditable(true);
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,6 +142,11 @@ public class ManageCheckStock extends javax.swing.JPanel {
         });
 
         ButCancel.setText("Cancel");
+        ButCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCancelActionPerformed(evt);
+            }
+        });
 
         ButSave.setText("Save");
         ButSave.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +237,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?"
                     + "", "Delete Product", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                product.delete(index + 1);
+                stock.delete(index);
 
             }
         }
@@ -237,17 +245,17 @@ public class ManageCheckStock extends javax.swing.JPanel {
     }//GEN-LAST:event_ButDelActionPerformed
 
     private void ButEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButEditActionPerformed
-       index = jTableCheckStock.getSelectedRow();
+        index = jTableCheckStock.getSelectedRow();
         if (index == -1) {
             int reply = JOptionPane.showConfirmDialog(null, "please select Row Edit ", "Edit ", JOptionPane.DEFAULT_OPTION);
             return;
         } else if (index > -1) {
             Show();
-            ArrayList<Product> product = this.product.getAll();
-            id = product.get(index).getId();
-            InputName.setText(product.get(index).getName());
-            InputPrice.setText(String.valueOf(product.get(index).getPrice()));
-            
+            ArrayList<Stock> product = this.stock.getAll();
+            id = stock.get(index).getId();
+            InputName.setText(stock.get(index).getName());
+            InputPrice.setText(String.valueOf(stock.get(index).getPrice()));
+
         } else {
             System.out.println("Can't Edit");
         }
@@ -260,28 +268,31 @@ public class ManageCheckStock extends javax.swing.JPanel {
     }//GEN-LAST:event_ButAddActionPerformed
 
     private void ButSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSaveActionPerformed
-        
+
     }//GEN-LAST:event_ButSaveActionPerformed
     public void Clear() {
         jTextField1.setText("");
         InputName.setText("");
         InputPrice.setText("");
-        
+        InputUnit.setText("");
+
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        if (jTextField1.getText() == null) {
-            int reply = JOptionPane.showConfirmDialog(null, "please input ID ", "File ID ", JOptionPane.DEFAULT_OPTION);
-            return;
-        } 
-        int TextToInt = Integer.parseInt(jTextField1.getText());
-        for (int i = 0; i < product.getAll().size(); i++) {
-            if (TextToInt == product.getAll().get(i).getId()) {
-                JLabelFind.setText("Find : ID " + product.getAll().get(i).getId()
-                        + " Name : " + product.getAll().get(i).getName() + " Price : " + product.getAll().get(i).getPrice());
+        int q = Integer.parseInt(jTextField1.getText());
+        for (int i = 0; i < stock.getAll().size(); i++) {
+            if (q == stock.getAll().get(i).getId()) {
+                JLabelFind.setText("Find : ID " + stock.getAll().get(i).getId()
+                        + " Name: " + stock.getAll().get(i).getName()
+                        + " Price: " + stock.getAll().get(i).getPrice()
+                        + " Unit: " + stock.getAll().get(i).getUnit());
             }
         }
+        jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ButCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCancelActionPerformed
+        Clear();
+    }//GEN-LAST:event_ButCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
