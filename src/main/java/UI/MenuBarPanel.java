@@ -55,7 +55,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btnManageUser = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
         btnInOut = new javax.swing.JButton();
-        btn4 = new javax.swing.JButton();
+        btnCheckStock = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -154,10 +154,16 @@ public class MenuBarPanel extends javax.swing.JPanel {
             }
         });
 
-        btn4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btn4.setMaximumSize(new java.awt.Dimension(107, 52));
-        btn4.setMinimumSize(new java.awt.Dimension(107, 52));
-        btn4.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnCheckStock.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnCheckStock.setText("CheckStock");
+        btnCheckStock.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnCheckStock.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnCheckStock.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnCheckStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckStockActionPerformed(evt);
+            }
+        });
 
         btn5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btn5.setMaximumSize(new java.awt.Dimension(107, 52));
@@ -181,7 +187,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnInOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCheckStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -194,7 +200,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(currentUserContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCheckStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnManageUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -254,18 +260,24 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btnInOut.setEnabled(false);
     }//GEN-LAST:event_btnInOutActionPerformed
 
+    private void btnCheckStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckStockActionPerformed
+        containerScroll.setViewportView(new ManageCheckStock());
+        enableAllBtn();
+        btnInOut.setEnabled(false);
+    }//GEN-LAST:event_btnCheckStockActionPerformed
+
     private void enableAllBtn() {
         btnSell.setEnabled(true);
         btnManageUser.setEnabled(true);
         btnStock.setEnabled(true);
         btnInOut.setEnabled(true);
-        btn4.setEnabled(true);
+        btnCheckStock.setEnabled(true);
         btn5.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn4;
     private javax.swing.JButton btn5;
+    private javax.swing.JButton btnCheckStock;
     private javax.swing.JButton btnInOut;
     private javax.swing.JButton btnManageUser;
     private javax.swing.JButton btnOut;

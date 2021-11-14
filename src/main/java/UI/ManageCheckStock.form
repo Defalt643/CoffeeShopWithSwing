@@ -36,21 +36,25 @@
                       <Component id="JLabelFind" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="InputName" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <Component id="ButAdd" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ButEdit" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ButDel" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="InputName" min="-2" pref="199" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="InputPrice" min="-2" pref="199" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="ButSave" min="-2" max="-2" attributes="0"/>
@@ -58,17 +62,9 @@
                               <Component id="ButCancel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="InputPrice" min="-2" pref="145" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="InputImage" min="-2" pref="154" max="-2" attributes="0"/>
+                              <Component id="InputUnit" min="-2" pref="199" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -94,23 +90,16 @@
                   <Component id="InputName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="InputPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="InputImage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="InputUnit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ButEdit" alignment="3" max="32767" attributes="0"/>
-                      <Component id="ButAdd" alignment="3" max="32767" attributes="0"/>
-                      <Component id="ButCancel" alignment="3" max="32767" attributes="0"/>
-                      <Component id="ButSave" alignment="3" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="ButDel" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ButEdit" alignment="3" max="32767" attributes="0"/>
+                  <Component id="ButAdd" alignment="3" max="32767" attributes="0"/>
+                  <Component id="ButCancel" alignment="3" max="32767" attributes="0"/>
+                  <Component id="ButSave" alignment="3" max="32767" attributes="0"/>
+                  <Component id="ButDel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -128,14 +117,20 @@
         <Component class="javax.swing.JTable" name="jTableCheckStock">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="0">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="ID" type="java.lang.Integer"/>
                 <Column editable="true" title="NAME" type="java.lang.String"/>
                 <Column editable="true" title="PRICE" type="java.lang.Integer"/>
+                <Column editable="true" title="UNIT" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -189,13 +184,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="InputPrice">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="IMAGE :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="InputImage">
-    </Component>
     <Component class="javax.swing.JButton" name="ButEdit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
@@ -207,6 +195,12 @@
     <Component class="javax.swing.JButton" name="ButDel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[51, 23]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[51, 23]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButDelActionPerformed"/>
@@ -238,7 +232,7 @@
         <Property name="text" type="java.lang.String" value="UNIT :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="InputUnit">
     </Component>
   </SubComponents>
 </Form>

@@ -44,7 +44,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
         ButCancel.setEnabled(false);
         InputName.setEditable(false);
         InputPrice.setEditable(false);
-        InputImage.setEditable(false);
+        
     }
 
     public void Show() {
@@ -52,7 +52,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
         ButCancel.setEnabled(true);
         InputName.setEditable(true);
         InputPrice.setEditable(true);
-        InputImage.setEditable(true);
+       
     }
     
     /**
@@ -73,15 +73,13 @@ public class ManageCheckStock extends javax.swing.JPanel {
         InputName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         InputPrice = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        InputImage = new javax.swing.JTextField();
         ButEdit = new javax.swing.JButton();
         ButDel = new javax.swing.JButton();
         ButAdd = new javax.swing.JButton();
         ButCancel = new javax.swing.JButton();
         ButSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        InputUnit = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
@@ -91,11 +89,11 @@ public class ManageCheckStock extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "NAME", "PRICE"
+                "ID", "NAME", "PRICE", "UNIT"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -117,8 +115,6 @@ public class ManageCheckStock extends javax.swing.JPanel {
 
         jLabel3.setText("PRICE :");
 
-        jLabel4.setText("IMAGE :");
-
         ButEdit.setText("Edit");
         ButEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +123,8 @@ public class ManageCheckStock extends javax.swing.JPanel {
         });
 
         ButDel.setText("Delete");
+        ButDel.setMaximumSize(new java.awt.Dimension(51, 23));
+        ButDel.setMinimumSize(new java.awt.Dimension(51, 23));
         ButDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButDelActionPerformed(evt);
@@ -166,35 +164,31 @@ public class ManageCheckStock extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JLabelFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InputName))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ButAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ButEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButDel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(InputName, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(InputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ButSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ButCancel))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(InputImage, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(InputUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -213,20 +207,15 @@ public class ManageCheckStock extends javax.swing.JPanel {
                     .addComponent(InputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(InputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(InputImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InputUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButDel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -258,7 +247,7 @@ public class ManageCheckStock extends javax.swing.JPanel {
             id = product.get(index).getId();
             InputName.setText(product.get(index).getName());
             InputPrice.setText(String.valueOf(product.get(index).getPrice()));
-            InputImage.setText(product.get(index).getImage());
+            
         } else {
             System.out.println("Can't Edit");
         }
@@ -271,24 +260,13 @@ public class ManageCheckStock extends javax.swing.JPanel {
     }//GEN-LAST:event_ButAddActionPerformed
 
     private void ButSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSaveActionPerformed
-        Double price = Double.parseDouble(InputPrice.getText());
-
-        if (index == -1) {
-            product.add(new Product(-1, InputName.getText(), price, InputImage.getText()));
-
-        } else {
-            product.update(new Product(id, InputName.getText(), price, InputImage.getText()));
-
-        }
-        Clear();
-        Hide();
-        checkStock();
+        
     }//GEN-LAST:event_ButSaveActionPerformed
     public void Clear() {
         jTextField1.setText("");
         InputName.setText("");
         InputPrice.setText("");
-        InputImage.setText("");
+        
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int TextToInt = Integer.parseInt(jTextField1.getText());
@@ -307,18 +285,16 @@ public class ManageCheckStock extends javax.swing.JPanel {
     private javax.swing.JButton ButDel;
     private javax.swing.JButton ButEdit;
     private javax.swing.JButton ButSave;
-    private javax.swing.JTextField InputImage;
     private javax.swing.JTextField InputName;
     private javax.swing.JTextField InputPrice;
+    private javax.swing.JTextField InputUnit;
     private javax.swing.JLabel JLabelFind;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableCheckStock;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
