@@ -5,19 +5,20 @@
  */
 package Model;
 
+import java.util.Date;
+
 /**
  *
  * @author Acer
  */
-public class Table {
+public class TableTime {
     private int id;
     private String username;
-    private double time;
+    
 
-    public Table(int id, String username, double time) {
+    public TableTime(int id, String username) {
         this.id = id;
         this.username = username;
-        this.time = time;
     }
 
     public int getId() {
@@ -36,15 +37,11 @@ public class Table {
         this.username = username;
     }
 
-    public double getTime() {
-        return time;
+    @Override
+    public String toString() {
+        return "TableTime{" + "id=" + id + ", username=" + username + '}';
     }
-
-    public void setTime(double time) {
-        this.time = time;
-    }
-    
-    
+   
     
     
 }

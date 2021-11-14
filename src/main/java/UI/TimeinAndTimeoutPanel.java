@@ -53,11 +53,8 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         settime = new javax.swing.JLabel();
-        btneadd = new javax.swing.JButton();
-        btneditlogin = new javax.swing.JButton();
-        btnedittime = new javax.swing.JButton();
-        btndelete = new javax.swing.JButton();
-        btnedit3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 440));
         setMinimumSize(new java.awt.Dimension(800, 440));
@@ -119,45 +116,17 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
             .addComponent(settime, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        btneadd.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btneadd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btneadd.setText("Add");
-        btneadd.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Checkin");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneaddActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        btneditlogin.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btneditlogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btneditlogin.setText("Edit");
-        btneditlogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneditloginActionPerformed(evt);
-            }
-        });
-
-        btnedittime.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnedittime.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnedittime.setText("Edit");
-        btnedittime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnedittimeActionPerformed(evt);
-            }
-        });
-
-        btndelete.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btndelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btndelete.setText("delete");
-
-        btnedit3.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnedit3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnedit3.setText("Exit");
-        btnedit3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnedit3ActionPerformed(evt);
-            }
-        });
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ID ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -173,23 +142,15 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btneditlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btneadd, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnedittime, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnedit3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,7 +162,7 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(btneditlogin))
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,13 +171,9 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btneadd)
-                    .addComponent(btnedittime)
-                    .addComponent(btndelete)
-                    .addComponent(btnedit3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,32 +194,17 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         jTextField2.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btneditloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditloginActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btneditloginActionPerformed
-
-    private void btnedit3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedit3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnedit3ActionPerformed
-
-    private void btneaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneaddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btneaddActionPerformed
-
-    private void btnedittimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedittimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnedittimeActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btndelete;
-    private javax.swing.JButton btneadd;
-    private javax.swing.JButton btnedit3;
-    private javax.swing.JButton btneditlogin;
-    private javax.swing.JButton btnedittime;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
