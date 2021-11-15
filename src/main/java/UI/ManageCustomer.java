@@ -31,15 +31,15 @@ public class ManageCustomer extends javax.swing.JPanel {
 
     public void disableUI() {
 
-        inputName.setVisible(false);
-        inputTel.setVisible(false);
+        inputName.setEnabled(false);
+        inputTel.setEnabled(false);
 
     }
 
     private void enableUI() {
 
-        inputName.setVisible(true);
-        inputTel.setVisible(true);
+       inputName.setEnabled(true);
+        inputTel.setEnabled(true);
 
     }
 
@@ -253,13 +253,26 @@ public class ManageCustomer extends javax.swing.JPanel {
         int TextToInt = Integer.parseInt(jTextField1.getText());
         for (int i = 0; i < user.getAll().size(); i++) {
             if (TextToInt == user.getAll().get(i).getId()) {
-                jLabel1.setText("ID : " + user.getAll().get(i).getId() + " Name : " + user.getAll().get(i).getName()+" Tel : "+user.getAll().get(i).getTel());
+                jLabel1.setText("ID : " + user.getAll().get(i).getId() + " Name : " + user.getAll().get(i).getName() + " Tel : " + user.getAll().get(i).getTel());
             }
         }
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        index = userTable.getSelectedRow();
+        if (index == -1) {
+            int reply = JOptionPane.showConfirmDialog(null, "please select Row Edit ", "Edit ", JOptionPane.DEFAULT_OPTION);
+            return;
+        } else if (index > -1) {
+            enableUI();
+            ArrayList<User> user = this.user.getAll();
+            inputName.setText(user.get(index).getName());
+            inputTel.setText(String.valueOf(user.get(index).getTel()));
+
+        } else {
+            System.out.println("Can't Edit");
+        }
 
     }//GEN-LAST:event_editButtonActionPerformed
 
