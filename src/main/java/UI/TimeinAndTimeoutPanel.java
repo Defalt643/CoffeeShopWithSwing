@@ -7,6 +7,7 @@ package UI;
 
 import DAO.TimeinTimeoutDAO;
 import DAO.UserDAO;
+import Model.TableTime;
 import Model.User;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -245,7 +246,7 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
     int TextToInt = Integer.parseInt(jTextField1.getText());
         for(int i =0;i<timein.getAll().size();i++){
         if(TextToInt==timein.getAll().get(i).getId()&& jTextField2 .equals(timein.getAll().get(i).getName())){
-           //timein.add(new TableTime(jTextField1.getText(),))
+           timein.add(new TableTime(jTextField2.getText(),time,"In"));
         }
     }
     }//GEN-LAST:event_jButton2ActionPerformed
