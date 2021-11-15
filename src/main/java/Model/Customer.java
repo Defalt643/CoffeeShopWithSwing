@@ -23,7 +23,8 @@ public class Customer {
     }
     public Customer(String name, String tel,int purchaseAmount){
         this(-1,name,tel,purchaseAmount);
-    }public Customer(String name,String tel){
+    }
+    public Customer(String name,String tel){
         this(-1,name,tel,0);
     }
     

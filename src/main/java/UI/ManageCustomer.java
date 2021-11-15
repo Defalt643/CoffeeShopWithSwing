@@ -5,8 +5,8 @@
  */
 package UI;
 
-import DAO.UserDAO;
-import Model.User;
+import DAO.CustomerDAO;
+import Model.Customer;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageCustomer extends javax.swing.JPanel {
 
-    UserDAO user = new UserDAO();
+    CustomerDAO customer = new CustomerDAO();
     private int index = -1;
 
     /**
@@ -54,8 +54,8 @@ public class ManageCustomer extends javax.swing.JPanel {
     public void checkAllUser() {
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         model.setRowCount(0);
-        for (int i = 0; i < user.getAll().size(); i++) {
-            model.addRow(new Object[]{user.getAll().get(i).getId(), user.getAll().get(i).getName(), user.getAll().get(i).getTel()});
+        for (int i = 0; i < customer.getAll().size(); i++) {
+            model.addRow(new Object[]{customer.getAll().get(i).getId(), customer.getAll().get(i).getName(), customer.getAll().get(i).getTel()});
         }
     }
 
@@ -81,8 +81,6 @@ public class ManageCustomer extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        errorMessage = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         newButton = new javax.swing.JButton();
 
@@ -151,11 +149,6 @@ public class ManageCustomer extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Error message :");
-
-        errorMessage.setForeground(new java.awt.Color(204, 0, 0));
-        errorMessage.setText("None");
-
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,10 +192,6 @@ public class ManageCustomer extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cancelButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(errorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,19 +230,15 @@ public class ManageCustomer extends javax.swing.JPanel {
                     .addComponent(editButton)
                     .addComponent(cancelButton)
                     .addComponent(textTel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(errorMessage))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int TextToInt = Integer.parseInt(jTextField1.getText());
-        for (int i = 0; i < user.getAll().size(); i++) {
-            if (TextToInt == user.getAll().get(i).getId()) {
-                jLabel1.setText("ID : " + user.getAll().get(i).getId() + " Name : " + user.getAll().get(i).getName() + " Tel : " + user.getAll().get(i).getTel());
+        for (int i = 0; i < customer.getAll().size(); i++) {
+            if (TextToInt == customer.getAll().get(i).getId()) {
+                jLabel1.setText("ID : " + customer.getAll().get(i).getId() + " Name : " + customer.getAll().get(i).getName() + " Tel : " + customer.getAll().get(i).getTel());
             }
         }
         jTextField1.setText("");
@@ -266,9 +251,9 @@ public class ManageCustomer extends javax.swing.JPanel {
             return;
         } else if (index > -1) {
             enableUI();
-            ArrayList<User> user = this.user.getAll();
-            inputName.setText(user.get(index).getName());
-            inputTel.setText(String.valueOf(user.get(index).getTel()));
+            ArrayList<Customer> user = this.customer.getAll();
+            inputName.setText(customer.get(index).getName());
+            inputTel.setText(String.valueOf(customer.get(index).getTel()));
 
         } else {
             System.out.println("Can't Edit");
@@ -282,7 +267,10 @@ public class ManageCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-
+        CustomerDAO customer = new CustomerDAO();
+        if(index == -1){
+            customer.add(new Customer(inputName.getText(),inputTel.getText()));
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
@@ -291,7 +279,7 @@ public class ManageCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        UserDAO user = new UserDAO();
+        CustomerDAO user = new CustomerDAO();
         index = userTable.getSelectedRow();
         if (index == -1) {
             int reply = JOptionPane.showConfirmDialog(null, "please select Row Edit ", "Edit ", JOptionPane.DEFAULT_OPTION);
@@ -311,13 +299,11 @@ public class ManageCustomer extends javax.swing.JPanel {
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
-    private javax.swing.JLabel errorMessage;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputTel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton newButton;
