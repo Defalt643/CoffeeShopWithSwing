@@ -38,7 +38,7 @@ public class ManageCustomer extends javax.swing.JPanel {
 
     private void enableUI() {
 
-       inputName.setEnabled(true);
+        inputName.setEnabled(true);
         inputTel.setEnabled(true);
 
     }
@@ -291,7 +291,15 @@ public class ManageCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-
+        UserDAO user = new UserDAO();
+        index = userTable.getSelectedRow();
+        if (index == -1) {
+            int reply = JOptionPane.showConfirmDialog(null, "please select Row Edit ", "Edit ", JOptionPane.DEFAULT_OPTION);
+            return;
+        } else {
+            user.delete(index + 1);
+        }
+        checkAllUser();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void jScrollPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentShown
