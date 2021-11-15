@@ -14,20 +14,42 @@ import java.util.Date;
 public class TableTime {
 
     private int id;
-    private String name, time, status;
-
-    public TableTime(int id, String name, String time, String status) {
+    private String name, status;
+    private Date time;
+    
+    
+    public TableTime(int id, String name, Date time, String status) {
         this.id = id;
         this.name = name;
         this.time = time;
         this.status = status;
     }
+
+    public TableTime(String name, Date time, String status) {
+        this.id = -1;
+        this.name = name;
+        this.time = time;
+        this.status = status;
+        
+    }
+
+    public TableTime(int id, String name, String status) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+    }
+
+    public TableTime(String name, String status) {
+        this.name = name;
+        this.status = status;
+    }
+
     
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

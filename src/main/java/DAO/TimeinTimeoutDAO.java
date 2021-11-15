@@ -11,7 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author Acer
@@ -25,11 +28,10 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         con = db.getConnection();
         int id = -1;
         try {
-            String sql = "INSERT INTO TableTime (Name,Status,Time) VALUES (?,?,?)";
+            String sql = "INSERT INTO TimeinTimeout (Name,Status) VALUES (?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, object.getName());
             stmt.setString(2, object.getStatus());
-            stmt.setString(3, object.getTime());
             int row = stmt.executeUpdate();
             ResultSet result = stmt.getGeneratedKeys();
             if (result.next()) {
@@ -49,18 +51,20 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         Database db = Database.getInstance();
         con = db.getConnection();
         try {
-            String query = "SELECT ID,Name,Time,Status FROM TableTime";
+            String query = "SELECT ID,Name,Time,Status FROM TimeinTimeout";
             Statement stmt = con.createStatement();
             ResultSet result = stmt.executeQuery(query);
             while (result.next()) {
                 int id = result.getInt("ID");
                 String name = result.getString("Name");
-                String time = result.getString("Time");
                 String status = result.getString("Status");
+                Date time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(result.getString("time"));
                 TableTime tabletime = new TableTime(id,name,time,status);
                 list.add(time);
             }
         } catch (SQLException ex) {
+            System.out.println("ERROR : SQLException");
+        } catch (ParseException ex) {
             System.out.println("ERROR : SQLException");
         }
         db.close();
@@ -72,18 +76,21 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         Database db = Database.getInstance();
         con = db.getConnection();
         try {
-            String query = "SELECT ID,Name,Time,Status FROM TableTime WHERE ID=" + id;
+            String query = "SELECT ID,Name,Time,Status FROM TimeinTimeout WHERE ID=" + id;
             Statement stmt = con.createStatement();
             ResultSet result = stmt.executeQuery(query);
             while (result.next()) {
                 int sid = result.getInt("ID");
                 String name = result.getString("Name");
-                String time = result.getString("Time");
+                String stime = result.getString("Time");
                 String status = result.getString("Status");
+                Date time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(result.getString("time"));
                 TableTime tabletime = new TableTime(id,name,time,status);
                 return tabletime;
             }
         } catch (SQLException ex) {
+            System.out.println("ERROR : SQLException");
+        } catch (ParseException ex) {
             System.out.println("ERROR : SQLException");
         }
         db.close();
@@ -97,7 +104,7 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         con = db.getConnection();
         int row = 0;
         try {
-            String updateQuery = "DELETE FROM TableTime WHERE ID=?";
+            String updateQuery = "DELETE FROM TimeinTimeout WHERE ID=?";
             PreparedStatement statement = con.prepareStatement(updateQuery);
             statement.setInt(1, id);
             row = statement.executeUpdate();
@@ -114,13 +121,12 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         con = db.getConnection();
         int row = 0;
         try {
-            String updateQuery = "UPDATE TableTime SET Name =?,Time =?,Status=? WHERE ID =?";
+            String updateQuery = "UPDATE TimeinTimeout SET Name =?,Status=? WHERE ID =?";
             PreparedStatement statement = con.prepareStatement(updateQuery);
-            TableTime time = new TableTime(object.getId(), object.getName(), object.getStatus(), object.getTime());
-            statement.setString(1, object.getName());
-            statement.setString(2, object.getTime());
-            statement.setString(3, object.getStatus());
-            statement.setInt(4, object.getId());
+            //TableTime time = new TableTime(object.getId(), object.getName(), object.getStatus(), object.getTime());
+                        statement.setString(1, object.getName());
+            statement.setString(2, object.getStatus());
+            statement.setInt(3, object.getId());
             row = statement.executeUpdate();
             System.out.println("Affect row " + row);
         } catch (SQLException ex) {
