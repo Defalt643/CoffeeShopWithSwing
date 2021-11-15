@@ -21,7 +21,7 @@ public class TestTimeinTimeout {
      public static void main(String[] args){
          TimeinTimeoutDAO time = new TimeinTimeoutDAO();
          time.add(new TableTime("winwin","in"));
-         //s
+         
          /*TableTime lastTableTime =time.get(id);
          System.out.print("Last : "+lastTableTime);
          //lastTableTime);
@@ -29,9 +29,11 @@ public class TestTimeinTimeout {
          System.out.print("Update Tim
          lastTableTime.setName("winwin");
          //
-         int row = time.update(einTimeout: "+updateTableTime);
+           
+         int row = time.update(time+"+updateTableTime");
          time.delete(row);
-         //
+         
+
          TableTime deleteTableTime =time.get(row);
          System.out.println("Delete TimeinTimeout : "+ deleteTableTime);
          */
