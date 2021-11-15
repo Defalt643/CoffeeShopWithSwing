@@ -19,7 +19,8 @@ public class testMenuDialog extends javax.swing.JDialog {
         initComponents();
 //        MenuPanel menuPanel = new MenuPanel();
 //        testPanel.setViewportView(new MenuPanel());
-        
+        ManageCustomer customer = new ManageCustomer();
+        testPanel.setViewportView(new ManageCustomer());
     }
 
     /**

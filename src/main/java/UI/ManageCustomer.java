@@ -30,42 +30,32 @@ public class ManageCustomer extends javax.swing.JPanel {
     }
 
     public void disableUI() {
-        inputID.setVisible(false);
+
         inputName.setVisible(false);
         inputTel.setVisible(false);
 
-        textId.setVisible(false);
-        textName.setVisible(false);
-        textTel.setVisible(false);
-   
     }
 
     private void enableUI() {
-        inputID.setVisible(true);
-        inputID.setEnabled(false);
+
         inputName.setVisible(true);
         inputTel.setVisible(true);
-      
-        textId.setVisible(true);
-        textName.setVisible(true);
-        textTel.setVisible(true);
-       
+
     }
 
     private void clearTextField() {
-        inputID.setText("");
+
         inputName.setText("");
-       
+
         inputTel.setText("");
-       
+
     }
 
     public void checkAllUser() {
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         model.setRowCount(0);
         for (int i = 0; i < user.getAll().size(); i++) {
-            model.addRow(new Object[]{user.getAll().get(i).getId(), user.getAll().get(i).getUsername(), user.getAll().get(i).getName(),
-                user.getAll().get(i).getTel(), user.getAll().get(i).getRole()});
+            model.addRow(new Object[]{user.getAll().get(i).getId(), user.getAll().get(i).getName(), user.getAll().get(i).getTel()});
         }
     }
 
@@ -84,8 +74,6 @@ public class ManageCustomer extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        inputID = new javax.swing.JTextField();
-        textId = new javax.swing.JLabel();
         textName = new javax.swing.JLabel();
         inputName = new javax.swing.JTextField();
         textTel = new javax.swing.JLabel();
@@ -112,11 +100,11 @@ public class ManageCustomer extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "USERNAME", "NAME", "TEL", "ROLE"
+                "ID", "Name", "Tel"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -137,8 +125,6 @@ public class ManageCustomer extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setText("Find ID Customer :");
-
-        textId.setText("ID:");
 
         textName.setText("Name:");
 
@@ -195,18 +181,14 @@ public class ManageCustomer extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(textId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(textName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(textTel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputTel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(inputTel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(newButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(saveButton)
@@ -250,17 +232,15 @@ public class ManageCustomer extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textId)
                     .addComponent(textName)
                     .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textTel)
                     .addComponent(inputTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newButton)
                     .addComponent(saveButton)
                     .addComponent(deleteButton)
                     .addComponent(editButton)
-                    .addComponent(cancelButton))
+                    .addComponent(cancelButton)
+                    .addComponent(textTel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -272,32 +252,15 @@ public class ManageCustomer extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int TextToInt = Integer.parseInt(jTextField1.getText());
         for (int i = 0; i < user.getAll().size(); i++) {
-            if (TextToInt == user.getAll().size()) {
-                jLabel1.setText("ID : " + user.getAll().get(i).getId() + " UserName : " + user.getAll().get(i).getName());
+            if (TextToInt == user.getAll().get(i).getId()) {
+                jLabel1.setText("ID : " + user.getAll().get(i).getId() + " Name : " + user.getAll().get(i).getName()+" Tel : "+user.getAll().get(i).getTel());
             }
         }
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        index = userTable.getSelectedRow();
-        UserDAO dao = new UserDAO();
-        if (index > -1) {
-            enableUI();
-            User user = dao.get(index + 1);
-            inputID.setText(String.valueOf(user.getId()));
-            inputName.setText(user.getName());
-           
-            inputTel.setText(user.getTel());
-            if (user.getRole().equals("Manager")) {
-               
-            } else {
-               
-            }
 
-        } else {
-            errorMessage.setText("You must select a row in table to edit user!");
-        }
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -306,39 +269,16 @@ public class ManageCustomer extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        UserDAO dao = new UserDAO();
-        if (index == -1) {
-           
-            clearTextField();
-            disableUI();
-            checkAllUser();
-        } else {
-          
-            clearTextField();
-            disableUI();
-            checkAllUser();
-        }
+
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
         enableUI();
-        inputID.setText(String.valueOf(user.getAll().size() + 1));
+
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        UserDAO dao = new UserDAO();
-        index = userTable.getSelectedRow();
-        if (index == -1) {
-            errorMessage.setText("You must select a row in table to delete user!");
-        } else {
-            User user = dao.get(index + 1);
-            int reply = JOptionPane.showConfirmDialog(null, "Are you sure?\nUser \""
-                    + user.getUsername() + "\" will delete this process cannot be undone!!!", "Delete User", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                dao.delete(index + 1);
-                checkAllUser();
-            }
-        }
+
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void jScrollPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentShown
@@ -351,7 +291,6 @@ public class ManageCustomer extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel errorMessage;
-    private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputTel;
     private javax.swing.JButton jButton1;
@@ -362,7 +301,6 @@ public class ManageCustomer extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton newButton;
     private javax.swing.JButton saveButton;
-    private javax.swing.JLabel textId;
     private javax.swing.JLabel textName;
     private javax.swing.JLabel textTel;
     private javax.swing.JTable userTable;

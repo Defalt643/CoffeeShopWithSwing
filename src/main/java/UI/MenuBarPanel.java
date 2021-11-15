@@ -26,6 +26,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
     public double vat;
     public double change;
     public String username;
+
     /**
      * Creates new form MenuBarPanel
      */
@@ -34,7 +35,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
         this.mainPanel = mainPanel;
         currentUserName.setText(mainPanel.currentUser.getName());
         currentUserRole.setText(mainPanel.currentUser.getRole());
-        username= mainPanel.currentUser.getName();
+        username = mainPanel.currentUser.getName();
     }
 
     /**
@@ -56,7 +57,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btnStock = new javax.swing.JButton();
         btnInOut = new javax.swing.JButton();
         btnCheckStock = new javax.swing.JButton();
-        btn5 = new javax.swing.JButton();
+        btnCustomer = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(900, 500));
@@ -165,10 +166,16 @@ public class MenuBarPanel extends javax.swing.JPanel {
             }
         });
 
-        btn5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btn5.setMaximumSize(new java.awt.Dimension(107, 52));
-        btn5.setMinimumSize(new java.awt.Dimension(107, 52));
-        btn5.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnCustomer.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnCustomer.setText("Customer");
+        btnCustomer.setMaximumSize(new java.awt.Dimension(107, 52));
+        btnCustomer.setMinimumSize(new java.awt.Dimension(107, 52));
+        btnCustomer.setPreferredSize(new java.awt.Dimension(107, 52));
+        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -189,7 +196,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCheckStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(currentUserContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -206,7 +213,7 @@ public class MenuBarPanel extends javax.swing.JPanel {
                         .addComponent(btnManageUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnInOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(containerScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -266,18 +273,24 @@ public class MenuBarPanel extends javax.swing.JPanel {
         btnInOut.setEnabled(false);
     }//GEN-LAST:event_btnCheckStockActionPerformed
 
+    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
+        containerScroll.setViewportView(new ManageCustomer());
+        enableAllBtn();
+        btnInOut.setEnabled(false);
+    }//GEN-LAST:event_btnCustomerActionPerformed
+
     private void enableAllBtn() {
         btnSell.setEnabled(true);
         btnManageUser.setEnabled(true);
         btnStock.setEnabled(true);
         btnInOut.setEnabled(true);
         btnCheckStock.setEnabled(true);
-        btn5.setEnabled(true);
+        btnCustomer.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn5;
     private javax.swing.JButton btnCheckStock;
+    private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnInOut;
     private javax.swing.JButton btnManageUser;
     private javax.swing.JButton btnOut;
