@@ -25,7 +25,7 @@ public class ManageCustomer extends javax.swing.JPanel {
      */
     public ManageCustomer() {
         initComponents();
-        checkAllUser();
+        checkAllCustomer();
         disableUI();
     }
 
@@ -51,7 +51,7 @@ public class ManageCustomer extends javax.swing.JPanel {
 
     }
 
-    public void checkAllUser() {
+    public void checkAllCustomer() {
         DefaultTableModel model = (DefaultTableModel) userTable.getModel();
         model.setRowCount(0);
         for (int i = 0; i < customer.getAll().size(); i++) {
@@ -251,7 +251,7 @@ public class ManageCustomer extends javax.swing.JPanel {
             return;
         } else if (index > -1) {
             enableUI();
-            ArrayList<Customer> user = this.customer.getAll();
+            ArrayList<Customer> customer = this.customer.getAll();
             inputName.setText(customer.get(index).getName());
             inputTel.setText(String.valueOf(customer.get(index).getTel()));
 
@@ -268,9 +268,16 @@ public class ManageCustomer extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         CustomerDAO customer = new CustomerDAO();
-        if(index == -1){
-            customer.add(new Customer(inputName.getText(),inputTel.getText()));
+        if (index == -1) {
+            customer.add(new Customer(inputName.getText(), inputTel.getText()));
+            checkAllCustomer();
+        } else {
+            customer.update(new Customer(index + 1, inputName.getText(), inputTel.getText(), 0));
+            checkAllCustomer();
+
         }
+        clearTextField();
+        disableUI();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
@@ -287,7 +294,7 @@ public class ManageCustomer extends javax.swing.JPanel {
         } else {
             user.delete(index + 1);
         }
-        checkAllUser();
+        checkAllCustomer();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void jScrollPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentShown
