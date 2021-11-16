@@ -30,7 +30,7 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
     TimeinTimeoutDAO timein = new TimeinTimeoutDAO();
     java.util.Date date = new java.util.Date();
     java.sql.Date time = new java.sql.Date(date.getTime());
-    java.sql.Timestamp sq = new java.sql.Timestamp(date.getTime());  
+    java.sql.Timestamp sq = new java.sql.Timestamp(date.getTime()); 
 
     /**
      * Creates new form TimeinAndTimeoutPanel
@@ -39,11 +39,14 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         initComponents();
         settime.setText("The current time is " + sdf.format(times));
         disableUI();
-        chckID();
+        checkTable();
+       
        
     }
 
-    public void chckID() {
+    public void checkTable() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        String s = sdf.format(sq);
         DefaultTableModel model = (DefaultTableModel) Table.getModel();
         model.setRowCount(0);
         for (int i = 0; i < timein.getAll().size(); i++) {
@@ -54,13 +57,13 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
     }
 
     public void disableUI() {
-        btnAdd.setEnabled(false);
-        btnDelete.setEnabled(false);
+        btnsave.setEnabled(false);
+        txtaddname.setEditable(false);
     }
 
     public void show() {
-        btnAdd.setEnabled(true);
-        btnDelete.setEnabled(true);
+         btnsave.setEnabled(true);
+        txtaddname.setEditable(true);
 
     }
 
@@ -74,18 +77,18 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         txtinputID = new javax.swing.JTextField();
-        txtinputName = new javax.swing.JTextField();
-        btnok = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         settime = new javax.swing.JLabel();
-        btnCheckin = new javax.swing.JButton();
         ShowID = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        btnsave = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtaddname = new javax.swing.JTextField();
+        btnOK = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(800, 490));
         setMinimumSize(new java.awt.Dimension(800, 490));
@@ -98,22 +101,8 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
             }
         });
 
-        txtinputName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        btnok.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnok.setText("OK");
-        btnok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnokActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("ID :");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Name :");
 
         jScrollPane2.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -152,15 +141,6 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
             .addComponent(settime, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
-        btnCheckin.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.foreground"));
-        btnCheckin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCheckin.setText("Checkin");
-        btnCheckin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCheckinActionPerformed(evt);
-            }
-        });
-
         ShowID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ShowID.setText("ID ");
 
@@ -178,6 +158,28 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
             }
         });
 
+        btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Addname");
+
+        txtaddname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtaddnameActionPerformed(evt);
+            }
+        });
+
+        btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOKActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,28 +188,31 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtinputName, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtinputID, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCheckin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addComponent(ShowID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtinputID, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(btnOK)
+                                .addGap(17, 17, 17))
+                            .addComponent(jScrollPane2)
+                            .addComponent(ShowID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(299, 299, 299)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtaddname, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnsave)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,54 +223,23 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtinputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(btnCheckin))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtinputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnok)
-                            .addComponent(jLabel2)))
+                            .addComponent(btnOK))
+                        .addGap(29, 29, 29))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ShowID, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
                     .addComponent(btnDelete)
-                    .addComponent(btnAdd))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(btnsave)
+                    .addComponent(txtaddname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
-        int TextToInt = Integer.parseInt(txtinputID.getText());
-        for (int i = 0; i < timein.getAll().size(); i++) {
-            if (TextToInt == timein.getAll().get(i).getId() && txtinputName.equals(timein.getAll().get(i).getName())) {
-                ShowID.setText("Find : ID " + timein.getAll().get(i).getId()
-                        + " Name : " + timein.getAll().get(i).getName());
-            }
-        }
-    }//GEN-LAST:event_btnokActionPerformed
-
-    private void btnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckinActionPerformed
-        show();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        System.out.println(sdf.format(sq));
-        String s = sdf.format(sq);
-        System.out.println("s "+s);
-        //System.out.println("time " + time);
-        int TextToInt = Integer.parseInt(txtinputID.getText());
-        for (int i = 0; i < timein.getAll().size(); i++) {
-            if (TextToInt == timein.getAll().get(i).getId() && txtinputName.equals(timein.getAll().get(i).getName())) {
-
-                timein.add(new TableTime(txtinputName.getText(), s, "In"));
-            } else {
-                int reply = JOptionPane.showConfirmDialog(null, "please select ID ", "Delete", JOptionPane.DEFAULT_OPTION);
-                return;
-            }
-        }
-        chckID();
-    }//GEN-LAST:event_btnCheckinActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int index = Table.getSelectedRow();
@@ -275,32 +249,57 @@ public class TimeinAndTimeoutPanel extends javax.swing.JPanel {
         } else {
             timein.delete(index+1);
         }
-
+        checkTable();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         show();
+   
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtinputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtinputIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtinputIDActionPerformed
 
+    private void txtaddnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtaddnameActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        String s = sdf.format(sq);
+        System.out.println("="+txtaddname.getText()+"=="+s);   
+        timein.add(new TableTime(-1,txtaddname.getText(),s,"in"));
+          checkTable();          
+    }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+       int TextToInt = Integer.parseInt(txtinputID.getText());
+       for(int i =0;i<timein.getAll().size();i++){
+           if(TextToInt == timein.getAll().get(i).getId()){
+               ShowID.setText("ID : "+timein.getAll().get(i).getId());
+           }else{
+               ShowID.setText("NOT FIND");
+           }
+       }
+       
+    }//GEN-LAST:event_btnOKActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ShowID;
     private javax.swing.JTable Table;
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnCheckin;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnok;
+    private javax.swing.JButton btnOK;
+    private javax.swing.JButton btnsave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel settime;
+    private javax.swing.JTextField txtaddname;
     private javax.swing.JTextField txtinputID;
-    private javax.swing.JTextField txtinputName;
     // End of variables declaration//GEN-END:variables
 }
