@@ -1,6 +1,8 @@
 UI\LoginPanel$1.class
 DAO\CustomerDAO.class
+UI\CheckStockPanel$7.class
 UI\TimeinAndTimeoutPanel$2.class
+UI\MenuBarPanel$7.class
 UI\ManageManagerPanel$8.class
 UI\ReceiptDetailPanel.class
 UI\MenuBarPanel$4.class
@@ -8,6 +10,7 @@ UI\ManageCheckStock$7.class
 UI\testMenuDialog.class
 UI\MenuPanel$1.class
 Model\Stock.class
+UI\TimeinAndTimeoutPanel$5.class
 UI\MainPanel.class
 UI\CheckStockPanel$4.class
 UI\ManageCustomer$6.class
@@ -16,6 +19,7 @@ UI\ManageManagerPanel$2.class
 UI\SubScribe$1.class
 UI\ManageManagerPanel$5.class
 UI\OrderPanel$3.class
+Test\TestTimeinTimeout.class
 UI\ReceiptPanel$1.class
 UI\ManageCustomer$4.class
 UI\CheckStockPanel$2.class
@@ -66,6 +70,7 @@ UI\ManageCheckStock$3.class
 UI\ReceiptPanel$2.class
 UI\ManageCustomer$8.class
 UI\ManageCustomer$5.class
+UI\TimeinAndTimeoutPanel$4.class
 UI\ProductPanel.class
 Model\OrderUI.class
 UI\MenuPanel$2.class
@@ -90,6 +95,7 @@ UI\ManageCheckStock$1.class
 UI\ManageManagerPanel.class
 UI\MenuBarPanel$1.class
 UI\ManageManagerPanel$9.class
+UI\TimeinAndTimeoutPanel$6.class
 UI\MenuPanel$4.class
 UI\ManageCheckStock.class
 UI\CheckStockPanel$5.class

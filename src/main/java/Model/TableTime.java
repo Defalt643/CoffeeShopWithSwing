@@ -5,7 +5,9 @@
  */
 package Model;
 
-import java.util.Date;
+
+
+ 
 
 /**
  *
@@ -13,43 +15,50 @@ import java.util.Date;
  */
 public class TableTime {
 
-    private int id;
-    private String name, status;
-    private Date time;
-    
-    
-    public TableTime(int id, String name, Date time, String status) {
+    private int id ;
+    private String name,time,status;
+
+    public TableTime(String name, String time, String status) {
+        this.id =-1;
+        this.name = name;
+        this.time = time;
+        this.status = status;
+    }
+
+    public TableTime(String name,String status) {
+        this.id =-1;
+        this.name = name;
+        this.time = time;
+        this.status = status;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public TableTime(int id, String name, String time, String status) {
         this.id = id;
         this.name = name;
         this.time = time;
         this.status = status;
     }
 
-    public TableTime(String name, Date time, String status) {
-        this.id = -1;
-        this.name = name;
-        this.time = time;
-        this.status = status;
-        
-    }
-
-    public TableTime(int id, String name, String status) {
+    public void setId(int id) {
         this.id = id;
-        this.name = name;
-        this.status = status;
     }
 
-    public TableTime(String name, String status) {
-        this.name = name;
-        this.status = status;
+    public String getName() {
+        return name;
     }
 
-    
-    public Date getTime() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -61,26 +70,11 @@ public class TableTime {
         this.status = status;
     }
 
-   
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String username) {
-        this.name = username;
-    }
-
     @Override
     public String toString() {
-        return "TableTime{" + "id=" + id + ", username=" + name + ", time=" + time + ", status=" + status + '}';
+        return "TableTime{" + "id=" + id + ", name=" + name + ", time=" + time + ", status=" + status + '}';
     }
-
+    
+    
+    
 }

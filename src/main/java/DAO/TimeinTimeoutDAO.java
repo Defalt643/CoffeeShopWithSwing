@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 /**
  *
  * @author Acer
@@ -28,10 +28,11 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         con = db.getConnection();
         int id = -1;
         try {
-            String sql = "INSERT INTO TimeinTimeout (Name,Status) VALUES (?,?)";
+            String sql = "INSERT INTO TimeinTimeout (Name,Time,Status) VALUES (?,?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, object.getName());
-            stmt.setString(2, object.getStatus());
+            stmt.setString(2,object.getTime());
+            stmt.setString(3, object.getStatus());
             int row = stmt.executeUpdate();
             ResultSet result = stmt.getGeneratedKeys();
             if (result.next()) {
@@ -57,14 +58,13 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
             while (result.next()) {
                 int id = result.getInt("ID");
                 String name = result.getString("Name");
+                String time = result.getString("Time");
                 String status = result.getString("Status");
-                Date time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(result.getString("time"));
-                TableTime tabletime = new TableTime(id,name,time,status);
-                list.add(time);
+                
+               TableTime tabletimes = new TableTime(id,name,time,status);
+                list.add(tabletimes);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR : SQLException");
-        } catch (ParseException ex) {
             System.out.println("ERROR : SQLException");
         }
         db.close();
@@ -82,15 +82,12 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
             while (result.next()) {
                 int sid = result.getInt("ID");
                 String name = result.getString("Name");
-                String stime = result.getString("Time");
+                String time = result.getString("Time");
                 String status = result.getString("Status");
-                Date time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(result.getString("time"));
                 TableTime tabletime = new TableTime(id,name,time,status);
                 return tabletime;
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR : SQLException");
-        } catch (ParseException ex) {
             System.out.println("ERROR : SQLException");
         }
         db.close();
@@ -121,12 +118,12 @@ public class TimeinTimeoutDAO implements DAOInterface<TableTime> {
         con = db.getConnection();
         int row = 0;
         try {
-            String updateQuery = "UPDATE TimeinTimeout SET Name =?,Status=? WHERE ID =?";
+            String updateQuery = "UPDATE TimeinTimeout SET Name =?,Status=?,Time =? WHERE ID =?";
             PreparedStatement statement = con.prepareStatement(updateQuery);
-            //TableTime time = new TableTime(object.getId(), object.getName(), object.getStatus(), object.getTime());
-                        statement.setString(1, object.getName());
-            statement.setString(2, object.getStatus());
-            statement.setInt(3, object.getId());
+            statement.setString(1, object.getName());
+            statement.setString(3, object.getTime());
+            statement.setString(3, object.getStatus());
+            statement.setInt(4, object.getId());
             row = statement.executeUpdate();
             System.out.println("Affect row " + row);
         } catch (SQLException ex) {
